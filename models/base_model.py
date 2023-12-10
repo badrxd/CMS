@@ -16,16 +16,16 @@ class BaseModel:
     created_at = Column(DATETIME, nullable=False, default=datetime.utcnow())
     updated_at = Column(DATETIME, nullable=False, default=datetime.utcnow())
 
-    def __init__():
+    def __init__(self):
         """Instatntiates a new model"""
         pass
-    
+
     def save(self):
-         """Updates updated_at with current time when instance is changed"""
+        """Updates updated_at with current time when instance is changed"""
         self.updated_at = datetime.now()
         storage.new(self)
-        storage.save(self)
-    
+        storage.save()
+        
     def delete(self):
         """ Deletes instance"""
         storage.delete(self)
