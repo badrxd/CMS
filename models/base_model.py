@@ -29,9 +29,11 @@ class BaseModel:
         """returns a dictionary containing all keys/values of the instance"""
         safe_dict = self.__dict__.copy()
         if "created_at" in safe_dict:
-            safe_dict["created_at"] = safe_dict["created_at"].strftime(time)
+            safe_dict["created_at"] = safe_dict["created_at"].strftime(
+                "%Y-%m-%dT%H:%M:%S.%f")
         if "updated_at" in safe_dict:
-            safe_dict["updated_at"] = safe_dict["updated_at"].strftime(time)
+            safe_dict["updated_at"] = safe_dict["updated_at"].strftime(
+                "%Y-%m-%dT%H:%M:%S.%f")
         safe_dict["__class__"] = self.__class__.__name__
         if "_sa_instance_state" in safe_dict:
             del safe_dict["_sa_instance_state"]
