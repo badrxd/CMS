@@ -37,8 +37,6 @@ class BaseModel:
         safe_dict["__class__"] = self.__class__.__name__
         if "_sa_instance_state" in safe_dict:
             del safe_dict["_sa_instance_state"]
-        if self.__class__.__name__ == 'User':
-            del safe_dict["password"]
         return safe_dict
 
     def delete(self):
