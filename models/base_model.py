@@ -4,7 +4,6 @@ from datetime import datetime
 from sqlalchemy import Column, String, DATETIME
 from sqlalchemy.ext.declarative import declarative_base
 from models import storage
-from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
 
@@ -25,7 +24,23 @@ class BaseModel:
         self.updated_at = datetime.now()
         storage.new(self)
         storage.save()
-        
+
+    def to_dict(self):
+        """returns a dictionary containing all keys/values of the instance"""
+        safe_dict = self.__dict__.copy()
+        if "created_at" in safe_dict:
+            safe_dict["created_at"] = safe_dict["created_at"].strftime(
+                "%Y-%m-%dT%H:%M:%S.%f")
+        if "updated_at" in safe_dict:
+            safe_dict["updated_at"] = safe_dict["updated_at"].strftime(
+                "%Y-%m-%dT%H:%M:%S.%f")
+        safe_dict["__class__"] = self.__class__.__name__
+        if "_sa_instance_state" in safe_dict:
+            del safe_dict["_sa_instance_state"]
+        if self.__class__.__name__ == 'User':
+            del safe_dict["password"]
+        return safe_dict
+
     def delete(self):
         """ Deletes instance"""
         storage.delete(self)
