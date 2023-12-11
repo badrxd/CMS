@@ -1,0 +1,16 @@
+"""This module defines a class Car"""
+from models.base_model import BaseModel, Base
+from sqlalchemy import Column, String, Boolean, Integer
+
+
+class Car(BaseModel, Base):
+    """This class defines a car by various attributes"""
+
+    __tablename__ = 'cars'
+    brand = Column(String(60), nullable=False)
+    image = Column(String(255), nullable=False)
+    matricule = Column(String(255), nullable=False)
+    rent_price = Column(Integer, nullable=False)
+    availability = Column(Boolean, nullable=False, default=False)
+    
+    customers = """relationship"""

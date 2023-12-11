@@ -5,6 +5,7 @@ from sqlalchemy import Column, String, Boolean
 
 class User(BaseModel, Base):
     """This class defines a user by various attributes"""
+
     __tablename__ = 'users'
     userName = Column(String(128), nullable=False, unique=True)
     password = Column(String(128), nullable=False)
