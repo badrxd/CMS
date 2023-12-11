@@ -1,19 +1,18 @@
 """This module defines a base class for all models in our project"""
 import uuid
 from datetime import datetime
-from sqlalchemy import Column, String, DATETIME
+from sqlalchemy import Column, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
-from models import storage
+import models
 
 Base = declarative_base()
 
 
-class BaseModel(Base):
+class BaseModel():
     """A base class for all models"""
-
     id = Column(String(60), nullable=False, primary_key=True, unique=True)
-    created_at = Column(DATETIME, nullable=False, default=datetime.utcnow())
-    updated_at = Column(DATETIME, nullable=False, default=datetime.utcnow())
+    created_at = Column(DateTime, nullable=False, default=datetime.utcnow())
+    updated_at = Column(DateTime, nullable=False, default=datetime.utcnow())
 
     def __init__(self, *args, **kwargs):
         """Instatntiates a new model"""
@@ -32,8 +31,8 @@ class BaseModel(Base):
     def save(self):
         """Updates updated_at with current time when instance is changed"""
         self.updated_at = datetime.now()
-        storage.new(self)
-        storage.save()
+        models.storage.new(self)
+        models.storage.save()
 
     def to_dict(self):
         """returns a dictionary containing all keys/values of the instance"""
@@ -51,4 +50,4 @@ class BaseModel(Base):
 
     def delete(self):
         """ Deletes instance"""
-        storage.delete(self)
+        models.storage.delete(self)
