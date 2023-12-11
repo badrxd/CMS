@@ -5,7 +5,6 @@ from models import storage
 omar = User(userName="omaridhmaid",
             password="dehao",
             fullName="Omar Id Hmaid",
-            isBlocked=False,
             role="faunder",
             secretKey="JB61834")
 omar.save()
