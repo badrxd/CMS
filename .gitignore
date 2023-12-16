@@ -1,2 +1,3 @@
-venv
-*.prisma
+env
+__pycache__
+*.pyc
