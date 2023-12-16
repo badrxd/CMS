@@ -7,8 +7,8 @@ class Reservation(BaseModel, Base):
     """This class defines a reservation by various attributes"""
 
     __tablename__ = 'reservations'
-    customer_id = Column(String(60), ForeignKey('customer.id'), nullable=False)
-    car_id = Column(String(60), ForeignKey('car.id'), nullable=False)
+    customer_id = Column(String(60), ForeignKey('customers.id'), nullable=False)
+    car_id = Column(String(60), ForeignKey('cars.id'), nullable=False)
     confirmed = Column(Boolean, nullable=False)
     amount = Column(Integer, nullable=False)
     start_date = Column(DateTime, nullable=False)
