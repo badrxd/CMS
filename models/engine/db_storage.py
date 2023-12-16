@@ -3,10 +3,16 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from models.base_model import Base, BaseModel
 from models.user import User
+from models.reservation import Reservation
+from models.car import Car
+from models.customer import Customer
 
 classes = {
     "BaseModel": BaseModel,
-    "User": User
+    "User": User,
+    "Car": Car,
+    "Reservation": Reservation,
+    "Reservation": Customer
 }
 
 
