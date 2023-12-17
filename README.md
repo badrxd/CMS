@@ -17,7 +17,7 @@ Our app relies on PostgreSQL as the primary database. PostgreSQL is a powerful, 
 We leverage SQLAlchemy as the Object-Relational Mapping (ORM) tool for interacting with the PostgreSQL database. SQLAlchemy simplifies database operations by allowing developers to interact with the database using Python classes and objects.
 
 ##### Tables
-![](./images/Graph_ORM.png)
+![](./resources/images/Graph_ORM.png)
 
 #### Python OOP
 
