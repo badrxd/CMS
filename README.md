@@ -6,6 +6,40 @@ Welcome to CMS, a desktop application designed to streamline cars management sys
 
 ## Technologies Used
 
+```r
+├── README.md
+├── app
+│   ├── __init__.py
+│   ├── core
+│   │   ├── __init__.py
+│   │   ├── business_logic.py
+│   │   └── data_handler.py
+│   └── gui
+│       ├── __init__.py
+│       ├── main_window.py
+│       └── secondary_window.py
+├── dbenv.sql
+├── env
+│   └── psql_python.sh
+├── main.py
+├── models
+│   ├── __init__.py
+│   ├── base_model.py
+│   ├── car.py
+│   ├── customer.py
+│   ├── engine
+│   │   ├── __init__.py
+│   │   └── db_storage.py
+│   ├── reservation.py
+│   ├── revenue.py
+│   └── user.py
+├── requirements.txt
+├── resources
+│   ├── images
+│   │   └── Graph_ORM.png
+│   └── styles
+│       └── styles.css
+```
 ### Database: PostgreSQL
 
 Our app relies on PostgreSQL as the primary database. PostgreSQL is a powerful, open-source relational database management system known for its reliability and extensibility. It provides robust support for complex queries, transactions, and data integrity.
@@ -17,7 +51,7 @@ Our app relies on PostgreSQL as the primary database. PostgreSQL is a powerful, 
 We leverage SQLAlchemy as the Object-Relational Mapping (ORM) tool for interacting with the PostgreSQL database. SQLAlchemy simplifies database operations by allowing developers to interact with the database using Python classes and objects.
 
 ##### Tables
-![](./images/Graph_ORM.png)
+![](./resources/images/Graph_ORM.png)
 
 #### Python OOP
 
