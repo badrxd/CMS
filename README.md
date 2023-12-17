@@ -16,6 +16,9 @@ Our app relies on PostgreSQL as the primary database. PostgreSQL is a powerful, 
 
 We leverage SQLAlchemy as the Object-Relational Mapping (ORM) tool for interacting with the PostgreSQL database. SQLAlchemy simplifies database operations by allowing developers to interact with the database using Python classes and objects.
 
+##### Tables
+![](./images/Graph_ORM.png)
+
 #### Python OOP
 
 The backend of CMS is built using Python, utilizing Object-Oriented Programming (OOP) principles. This design approach enhances code organization, modularity, and maintainability. Python's versatility and readability contribute to an efficient and scalable backend.

@@ -6,13 +6,15 @@ from models.user import User
 from models.reservation import Reservation
 from models.car import Car
 from models.customer import Customer
+from models.revenue import Revenue
+
 
 classes = {
-    "BaseModel": BaseModel,
     "User": User,
     "Car": Car,
     "Reservation": Reservation,
-    "Reservation": Customer
+    "Reservation": Customer,
+    "Revenue": Revenue
 }
 
 
@@ -25,10 +27,17 @@ class DBStorage:
         db_url = "postgresql://postgres:root@127.0.0.1:5432/cms"
         self.__engine = create_engine(db_url)
 
-    def all(self):
+    def all(self, cls=None):
         """query on the current database session"""
         new_dict = {}
-        objs = self.__session.query(User).all()
+        if cls is None:
+            for val in classes.values():
+                objs = self.__session.query(val).order_by(val.created_at.desc()).all()
+                for obj in objs:
+                    key = obj.__class__.__name__ + '.' + obj.id
+                    new_dict[key] = obj
+            return (new_dict)
+        objs = self.__session.query(cls).order_by(cls.created_at.desc()).all()
         for obj in objs:
             key = obj.__class__.__name__ + '.' + obj.id
             new_dict[key] = obj

@@ -2,7 +2,7 @@
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, Boolean, Integer
 from sqlalchemy.orm import relationship
-from models.reservation import Reservation
+# from models.reservation import Reservation
 
 
 class Car(BaseModel, Base):
@@ -15,4 +15,4 @@ class Car(BaseModel, Base):
     rent_price = Column(Integer, nullable=False)
     currency = Column(String(60), nullable=False)
     availability = Column(Boolean, nullable=False, default=True)
-    resirvations = relationship('Reservation', backref='car')
+    reservations = relationship('Reservation', backref='car')
