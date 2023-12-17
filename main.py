@@ -1,13 +1,14 @@
-import tkinter
-import customtkinter  # <- import the CustomTkinter module
 
-root_tk = customtkinter.  # create the Tk window like you normally do
+import tkinter
+import customtkinter
+
+root_tk = customtkinter.CTk()  # create the Tk window like you normally do
 root_tk.geometry("400x240")
 root_tk.title("CustomTkinter Test")
 
 
 def button_function():
-    print("button pressed")
+    print("omar")
 
 
 # Use CTkButton instead of tkinter Button
