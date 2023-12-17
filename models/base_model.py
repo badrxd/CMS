@@ -46,6 +46,10 @@ class BaseModel():
         # safe_dict["__class__"] = self.__class__.__name__
         if "_sa_instance_state" in safe_dict:
             del safe_dict["_sa_instance_state"]
+        if "password" in safe_dict:
+            del safe_dict["password"]
+        if "secretKey" in safe_dict:
+            del safe_dict["secretKey"]
         return safe_dict
 
     def delete(self):
