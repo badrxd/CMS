@@ -15,5 +15,5 @@ class Customer(BaseModel, Base):
     driver_id = Column(String(60))
     card_id_image = Column(String(255))
     driver_id_image = Column(String(255))
-    balcklist = Column(Boolean, nullable=False, default=False)
-    resirvations = relationship('Reservation', backref='customer')
+    blacklist = Column(Boolean, nullable=False, default=False)
+    reservations = relationship('Reservation', backref='customer')
