@@ -12,36 +12,30 @@ ctk.set_default_color_theme("blue")
 
 
 class App(ctk.CTk):
-    __width = 0
-    __height = 0
+    width = 0
+    height = 0
+    __frames = {}
 
     def __init__(self):
         super().__init__()
         self.title("CMS")
         self.width = self.winfo_screenwidth() - 100
         self.height = self.winfo_screenheight() - 100
-        self.geometry(f"{self.__width}x{self.__height}")
-
-        self.frames = {}
-        self.notif = None
-
-        # Initialize frames
-
-        # Show the initial frame
+        self.geometry(f"{self.width}x{self.height}")
         self.show_login()
 
     def show_login(self):
-        self.frames["LoginFrame"] = LoginFrame(self, self.show_dashboard)
-        if "DashboardFrame" in self.frames:
-            self.frames["DashboardFrame"].destroy()
-        self.frames["LoginFrame"].place(
+        self.__frames["LoginFrame"] = LoginFrame(self, self.show_dashboard)
+        if "DashboardFrame" in self.__frames:
+            self.__frames["DashboardFrame"].destroy()
+        self.__frames["LoginFrame"].place(
             relx=0.5, rely=0.5, anchor="center")
 
     def show_dashboard(self, userId):
-        self.frames["DashboardFrame"] = DashboardFrame(
+        self.__frames["DashboardFrame"] = DashboardFrame(
             self, self.show_login, userId)
-        self.frames["LoginFrame"].destroy()
-        self.frames["DashboardFrame"].pack()
+        self.__frames["LoginFrame"].destroy()
+        self.__frames["DashboardFrame"].place(x=0, y=0)
 
     def notification(self, txt):
         self.notif = ctk.CTkLabel(
