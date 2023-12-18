@@ -26,24 +26,26 @@ class App(ctk.CTk):
         self.notif = None
 
         # Initialize frames
-        self.frames["LoginFrame"] = LoginFrame(self, self.show_dashboard)
-        self.frames["DashboardFrame"] = DashboardFrame(self, self.show_login)
 
         # Show the initial frame
         self.show_login()
 
     def show_login(self):
-        self.frames["DashboardFrame"].pack_forget()
+        self.frames["LoginFrame"] = LoginFrame(self, self.show_dashboard)
+        if "DashboardFrame" in self.frames:
+            self.frames["DashboardFrame"].destroy()
         self.frames["LoginFrame"].place(
             relx=0.5, rely=0.5, anchor="center")
 
-    def show_dashboard(self):
-        self.frames["LoginFrame"].place_forget()
+    def show_dashboard(self, userId):
+        self.frames["DashboardFrame"] = DashboardFrame(
+            self, self.show_login, userId)
+        self.frames["LoginFrame"].destroy()
         self.frames["DashboardFrame"].pack()
 
     def notification(self, txt):
         self.notif = ctk.CTkLabel(
             self, text=txt, corner_radius=7, fg_color="white"
         )
-        
+
         self.notif.pack(pady=(50, 10), padx=20)
