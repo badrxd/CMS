@@ -12,15 +12,15 @@ ctk.set_default_color_theme("blue")
 
 
 class App(ctk.CTk):
-    __width = 0
-    __height = 0
+    width = 0
+    height = 0
 
     def __init__(self):
         super().__init__()
         self.title("CMS")
         self.width = self.winfo_screenwidth() - 100
         self.height = self.winfo_screenheight() - 100
-        self.geometry(f"{self.__width}x{self.__height}")
+        self.geometry(f"{self.width}x{self.height}")
 
         self.frames = {}
         self.notif = None
