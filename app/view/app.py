@@ -26,8 +26,6 @@ class App(ctk.CTk):
         self.notif = None
 
         # Initialize frames
-        # self.frames["DashboardFrame"] = DashboardFrame(self, self.show_login)
-        # self.frames["LoginFrame"] = LoginFrame(self, self.show_dashboard)
 
         # Show the initial frame
         self.show_login()
@@ -39,8 +37,9 @@ class App(ctk.CTk):
         self.frames["LoginFrame"].place(
             relx=0.5, rely=0.5, anchor="center")
 
-    def show_dashboard(self):
-        self.frames["DashboardFrame"] = DashboardFrame(self, self.show_login)
+    def show_dashboard(self, userId):
+        self.frames["DashboardFrame"] = DashboardFrame(
+            self, self.show_login, userId)
         self.frames["LoginFrame"].destroy()
         self.frames["DashboardFrame"].pack()
 

@@ -1,7 +1,7 @@
 import customtkinter as ctk
 import tkinter
 import tkinter.messagebox
-import time
+from app.core.authentication import GetUser
 
 
 class LoginFrame(ctk.CTkFrame):
@@ -33,9 +33,9 @@ class LoginFrame(ctk.CTkFrame):
             tkinter.messagebox.showerror(
                 "Login Failed", "Please Fill the fields")
         else:
-            req = True
-            if req:
-                self.on_login()
+            req = GetUser(self.username.get(), self.password.get())
+            if req['status']:
+                self.on_login(req['userId'])
             else:
                 tkinter.messagebox.showerror(
-                    "Login Failed", f"Invalid{True}")
+                    "Login Failed", f"Invalid: {req['message']}")
