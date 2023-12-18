@@ -32,7 +32,8 @@ class DBStorage:
         new_dict = {}
         if cls is None:
             for val in classes.values():
-                objs = self.__session.query(val).order_by(val.created_at.desc()).all()
+                objs = self.__session.query(val).order_by(
+                    val.created_at.desc()).all()
                 for obj in objs:
                     key = obj.__class__.__name__ + '.' + obj.id
                     new_dict[key] = obj
@@ -66,3 +67,8 @@ class DBStorage:
     def close(self):
         """call remove() method on the private session attribute"""
         self.__session.remove()
+
+    # TODO(def get(self , cls, id))
+    @property
+    def session(self):
+        return self.__session

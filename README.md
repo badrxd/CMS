@@ -12,14 +12,17 @@ Welcome to CMS, a desktop application designed to streamline cars management sys
 │   ├── __init__.py
 │   ├── core
 │   │   ├── __init__.py
+│   │   ├── authentication.py
 │   │   ├── business_logic.py
 │   │   └── data_handler.py
 │   └── view
 │       ├── __init__.py
-│       ├── main_window.py
-│       └── secondary_window.py
+│       ├── app.py
+│       ├── dashboard_frame.py
+│       └── login_frame.py
 ├── dbenv.sql
 ├── env
+│   ├── omarenv.txt
 │   └── psql_python.sh
 ├── main.py
 ├── models
@@ -36,9 +39,11 @@ Welcome to CMS, a desktop application designed to streamline cars management sys
 ├── requirements.txt
 ├── resources
 │   ├── images
-│   │   └── Graph_ORM.png
+│   │   ├── Graph_ORM.png
+│   │   └── dashboard_frame.png
 │   └── styles
 │       └── styles.css
+└── testbaseModel.py
 ```
 ### Database: PostgreSQL
 
@@ -60,6 +65,11 @@ The backend of CMS is built using Python, utilizing Object-Oriented Programming 
 ### GUI: CustomTkinter
 
 Our Graphical User Interface (GUI) is crafted using CustomTkinter, a customized version of the Tkinter library in Python. CustomTkinter enhances the user experience by providing a tailored interface with intuitive navigation and a visually appealing design. It streamlines user interactions and ensures a seamless experience while interacting with the CMS desktop app.
+
+### UI:
+
+#### Dashboar:
+![](./resources/images/dashboard_frame.png)
 
 ## Features
 

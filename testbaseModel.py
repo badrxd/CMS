@@ -1,4 +1,3 @@
-# from models.base_model import BaseModel
 from models.car import Car
 from models.customer import Customer
 from models.reservation import Reservation
@@ -8,23 +7,12 @@ from datetime import datetime, timedelta
 
 from models import storage
 
-# user = User(userName="Moha",
-#             password="mohhhhhhhh",
-#             fullName="Mohamed ben jamaa",
-#             role="adman",
-#             secretKey="siiMO")
-# user.save()
-
-# car = Car(brand="dacia",
-#           image="path",
-#           matricule="2541-a-465165",
-#           rent_price=200,
-#           currency="MAD")
-# car.save()
-
-# cus = Customer(full_name="omar Ouydir",
-# phone="0756300302")
-# cus.save()
+user = User(userName="omar",
+            password="omarnem",
+            fullName="omar idhmaid",
+            role="adman",
+            secretKey="lhaj")
+user.save()
 
 
 
@@ -35,10 +23,10 @@ def create_res(**args):
     rev_id = ""
     if list_rev == [] or not timenow.startswith(list_rev[0].time):
         print(timenow[:7])
-        rev = Revenue(time = timenow[:7],
-                        month = timenow.split("-")[1],
-                        year = timenow.split("-")[0],
-                        )
+        rev = Revenue(time=timenow[:7],
+                      month=timenow.split("-")[1],
+                      year=timenow.split("-")[0],
+                      )
         rev_id = rev.id
         rev.save()
     else:
@@ -52,26 +40,54 @@ def create_res(**args):
     rev.amount += res.amount
     rev.save()
 
+
 args = {"customer_id": "cd72b533-35b4-4bae-ac3d-da2fdd9c21d4",
-"car_id": "cc00b4a7-b18e-44f9-95a1-1c3656966f11",
-"confirmed": True,
-"amount": 1400,
-"start_date": datetime.now(),
-"end_date": datetime.now() + timedelta(weeks=2)}
+        "car_id": "cc00b4a7-b18e-44f9-95a1-1c3656966f11",
+        "confirmed": True,
+        "amount": 1400,
+        "start_date": datetime.now(),
+        "end_date": datetime.now() + timedelta(weeks=2)}
 
 # create_res(**args)
 
 objs = {}
 
+
 # users = storage.all(Reservation)
 # for one in users:
-#     objs[one] = users[one].to_dict()
-
-users = storage.all(Reservation)
-for one in users:
-    objs[f"the Revenue of [{one}]"] = users[one].revenue.to_dict()
+#     objs[f"the Revenue of [{one}]"] = users[one].revenue.to_dict()
 
 
+# print(objs)
 
 
-print(objs)
+from sqlalchemy import func
+from models.car import Car
+from models.user import User
+from models import storage
+from models.customer import Customer
+from models.reservation import Reservation
+from models.revenue import Revenue
+
+
+def getStatic():
+    print('yes')
+    session = storage.session()
+    data = {'cars': 0, 'reservations': 0,
+            'customers': 0, 'mounth_income': 0}
+
+
+    data['cars'] = session.query(func.count(
+        Car.id)).filter(Car.availability == True).scalar()
+
+    data['reservations'] = session.query(func.count(Reservation.id)).scalar()
+
+    data['customers'] = session.query(func.count(Customer.id)).scalar()
+
+
+    lastRevenue = session.query(
+        Revenue).order_by(Revenue.created_at.desc()).first()
+
+    data['mounth_income'] = 0 if lastRevenue == None else lastRevenue['amount']
+    # return data
+    print(data)
