@@ -14,7 +14,7 @@ Welcome to CMS, a desktop application designed to streamline cars management sys
 │   │   ├── __init__.py
 │   │   ├── business_logic.py
 │   │   └── data_handler.py
-│   └── gui
+│   └── view
 │       ├── __init__.py
 │       ├── main_window.py
 │       └── secondary_window.py
