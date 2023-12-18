@@ -23,6 +23,7 @@ class App(ctk.CTk):
         self.geometry(f"{self._width}x{self._height}")
 
         self.frames = {}
+        self.notif = None
 
         # Initialize frames
         self.frames["LoginFrame"] = LoginFrame(self, self.show_dashboard)
@@ -41,7 +42,8 @@ class App(ctk.CTk):
         self.frames["DashboardFrame"].pack()
 
     def notification(self, txt):
-        notif = ctk.CTkLabel(
+        self.notif = ctk.CTkLabel(
             self, text=txt, corner_radius=7, fg_color="white"
         )
-        notif.pack(pady=(50, 10), padx=20)
+        
+        self.notif.pack(pady=(50, 10), padx=20)
