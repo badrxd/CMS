@@ -1,6 +1,9 @@
 import customtkinter as ctk
 import tkinter
 import tkinter.messagebox
+
+from app.core.Data_Handler.statistic import getStatistic
+
 from .components.sidebar import Sidebar
 from .components.header import Header
 

@@ -69,3 +69,6 @@ class DBStorage:
         self.__session.remove()
 
     # TODO(def get(self , cls, id))
+    @property
+    def session(self):
+        return self.__session

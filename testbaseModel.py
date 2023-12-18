@@ -1,4 +1,3 @@
-# from models.base_model import BaseModel
 from models.car import Car
 from models.customer import Customer
 from models.reservation import Reservation
@@ -15,16 +14,6 @@ user = User(userName="omar",
             secretKey="lhaj")
 user.save()
 
-# car = Car(brand="dacia",
-#           image="path",
-#           matricule="2541-a-465165",
-#           rent_price=200,
-#           currency="MAD")
-# car.save()
-
-# cus = Customer(full_name="omar Ouydir",
-# phone="0756300302")
-# cus.save()
 
 
 def create_res(**args):
@@ -63,13 +52,42 @@ args = {"customer_id": "cd72b533-35b4-4bae-ac3d-da2fdd9c21d4",
 
 objs = {}
 
+
 # users = storage.all(Reservation)
 # for one in users:
-#     objs[one] = users[one].to_dict()
-
-users = storage.all(User)
-for one in users:
-    objs[one] = users[one].to_dict()
+#     objs[f"the Revenue of [{one}]"] = users[one].revenue.to_dict()
 
 
-print(objs)
+# print(objs)
+
+
+from sqlalchemy import func
+from models.car import Car
+from models.user import User
+from models import storage
+from models.customer import Customer
+from models.reservation import Reservation
+from models.revenue import Revenue
+
+
+def getStatic():
+    print('yes')
+    session = storage.session()
+    data = {'cars': 0, 'reservations': 0,
+            'customers': 0, 'mounth_income': 0}
+
+
+    data['cars'] = session.query(func.count(
+        Car.id)).filter(Car.availability == True).scalar()
+
+    data['reservations'] = session.query(func.count(Reservation.id)).scalar()
+
+    data['customers'] = session.query(func.count(Customer.id)).scalar()
+
+
+    lastRevenue = session.query(
+        Revenue).order_by(Revenue.created_at.desc()).first()
+
+    data['mounth_income'] = 0 if lastRevenue == None else lastRevenue['amount']
+    # return data
+    print(data)

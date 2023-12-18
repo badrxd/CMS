@@ -14,6 +14,7 @@ ctk.set_default_color_theme("blue")
 class App(ctk.CTk):
     width = 0
     height = 0
+
     __frames = {}
 
     def __init__(self):
@@ -22,6 +23,7 @@ class App(ctk.CTk):
         self.width = self.winfo_screenwidth() - 100
         self.height = self.winfo_screenheight() - 100
         self.geometry(f"{self.width}x{self.height}")
+
         self.show_login()
 
     def show_login(self):
