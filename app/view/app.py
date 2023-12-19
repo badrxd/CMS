@@ -23,6 +23,8 @@ class App(ctk.CTk):
         self.width = self.winfo_screenwidth() - 100
         self.height = self.winfo_screenheight() - 100
         self.geometry(f"{self.width}x{self.height}")
+        self.columnconfigure(0, weight=1)
+        self.rowconfigure(0, weight=1)
 
         self.show_login()
 
@@ -33,11 +35,11 @@ class App(ctk.CTk):
         self.__frames["LoginFrame"].place(
             relx=0.5, rely=0.5, anchor="center")
 
-    def show_dashboard(self, userId):
+    def show_dashboard(self, userInfo):
         self.__frames["DashboardFrame"] = DashboardFrame(
-            self, self.show_login, userId)
+            self, self.show_login, userInfo)
         self.__frames["LoginFrame"].destroy()
-        self.__frames["DashboardFrame"].place(x=0, y=0)
+        self.__frames["DashboardFrame"].grid(row=0, column=0, sticky="nwes")
 
     def notification(self, txt):
         self.notif = ctk.CTkLabel(

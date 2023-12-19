@@ -1,6 +1,6 @@
 """This module defines a class Customer"""
 from models.base_model import BaseModel, Base
-from sqlalchemy import Column, String, Boolean
+from sqlalchemy import Column, String, Boolean, Integer
 from sqlalchemy.orm import relationship
 from models.reservation import Reservation
 
@@ -16,4 +16,6 @@ class Customer(BaseModel, Base):
     card_id_image = Column(String(255))
     driver_id_image = Column(String(255))
     blacklist = Column(Boolean, nullable=False, default=False)
+    num_of_res = Column(Integer, nullable=False, default=0)
+    spending = Column(Integer, nullable=False, default=0)
     reservations = relationship('Reservation', backref='customer')

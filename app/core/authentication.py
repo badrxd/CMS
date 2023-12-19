@@ -6,15 +6,15 @@ def GetUser(username, password):
     """method for getting the user, and check if the username and password are correct"""
     status = False
     message = 'Username not exist'
-    userId = ""
+    userInfo = ""
     users = storage.all(User)
     for user in users.values():
         if user.userName == username:
             if user.password == password:
                 message = ''
                 status = True
-                userId = user.id
+                userInfo = user.to_dict()
             else:
                 message = 'Password incorrect'
             break
-    return {'status': status, 'message': message, 'userId': userId}
+    return {'status': status, 'message': message, 'userInfo': userInfo}
