@@ -2,7 +2,7 @@ import customtkinter as ctk
 import tkinter
 import tkinter.messagebox
 
-from app.core.Data_Handler.statistic import getStatistic
+from app.core.Data_Handler.GetHomeData import getStatistic
 
 from .components.sidebar import Sidebar
 from .components.header import Header
@@ -17,12 +17,12 @@ class DashboardFrame(ctk.CTkFrame):
     userId = ""
     __frames = {}
 
-    def __init__(self, master, on_logout, userId):
+    def __init__(self, master, on_logout, userInfo):
         super().__init__(master)
 
+        self.userInfo = userInfo
         self.on_logout = on_logout
-        self.userId = userId
-        print(userId)
+
 
         """split the width"""
         self.columnconfigure(0, weight=1)
@@ -33,6 +33,7 @@ class DashboardFrame(ctk.CTkFrame):
         self.rowconfigure(1, weight=100)
 
         """create wigets"""
+
         self.create_sidebar()
         self.create_header()
         self.create_main()

@@ -35,9 +35,9 @@ class App(ctk.CTk):
         self.__frames["LoginFrame"].place(
             relx=0.5, rely=0.5, anchor="center")
 
-    def show_dashboard(self, userId):
+    def show_dashboard(self, userInfo):
         self.__frames["DashboardFrame"] = DashboardFrame(
-            self, self.show_login, userId)
+            self, self.show_login, userInfo)
         self.__frames["LoginFrame"].destroy()
         self.__frames["DashboardFrame"].grid(row=0, column=0, sticky="nwes")
 

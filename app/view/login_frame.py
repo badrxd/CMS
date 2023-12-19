@@ -48,7 +48,7 @@ class LoginFrame(ctk.CTkFrame):
         else:
             req = GetUser(self.username.get(), self.password.get())
             if req['status']:
-                self.on_login(req['userId'])
+                self.on_login(req['userInfo'])
             else:
                 tkinter.messagebox.showerror(
                     "Login Failed", f"Invalid: {req['message']}")
