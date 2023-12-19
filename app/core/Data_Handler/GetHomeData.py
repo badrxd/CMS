@@ -24,7 +24,10 @@ def getStatistic():
 
     data['mounth_income'] = 0 if lastRevenue == None else lastRevenue['amount']
     print(data)
-    # return data
+    return data
 
 
-# getStatic()
+def getLastReservations():
+    session = storage.session()
+    LastReservations = session.query(Reservation).order_by(
+        Reservation.created_at.desc()).limit(4)
