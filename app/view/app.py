@@ -34,10 +34,10 @@ class App(ctk.CTk):
             relx=0.5, rely=0.5, anchor="center")
 
     def show_dashboard(self, userInfo):
-        self.frames["DashboardFrame"] = DashboardFrame(
+        self.__frames["DashboardFrame"] = DashboardFrame(
             self, self.show_login, userInfo)
-        self.frames["LoginFrame"].destroy()
-        self.frames["DashboardFrame"].pack()
+        self.__frames["LoginFrame"].destroy()
+        self.__frames["DashboardFrame"].pack()
 
     def notification(self, txt):
         self.notif = ctk.CTkLabel(
