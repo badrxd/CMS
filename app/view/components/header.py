@@ -5,8 +5,12 @@ import tkinter.messagebox
 
 class Header(ctk.CTkFrame):
     def __init__(self, master):
-        super().__init__(master, width=master.width, height=80,
-                         fg_color="#A7FBFE", bg_color="#A7FBFE")
+        super().__init__(
+            master,
+            fg_color="#A7FBFE",
+            bg_color="#A7FBFE",
+            height=70
+        )
 
         """app name"""
         # name_label = ctk.CTkLabel(
