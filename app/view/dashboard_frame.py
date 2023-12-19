@@ -6,6 +6,11 @@ from app.core.Data_Handler.statistic import getStatistic
 
 from .components.sidebar import Sidebar
 from .components.header import Header
+from .components.home import Home
+
+Sections = {
+    "Home": Home,
+}
 
 
 class DashboardFrame(ctk.CTkFrame):
@@ -13,23 +18,37 @@ class DashboardFrame(ctk.CTkFrame):
     __frames = {}
 
     def __init__(self, master, on_logout, userId):
-        self.height = master.height
-        self.width = master.width
-        super().__init__(master, height=self.height,
-                         width=self.width)
+        super().__init__(master)
+
         self.on_logout = on_logout
         self.userId = userId
         print(userId)
-        self.create_header()
+
+        """split the width"""
+        self.columnconfigure(0, weight=1)
+        self.columnconfigure(1, weight=50)
+
+        """split the height"""
+        self.rowconfigure(0, weight=1)
+        self.rowconfigure(1, weight=100)
+
+        """create wigets"""
         self.create_sidebar()
-        # logout_button = ctk.CTkButton(
-        #     self, text="Logout", width=50, command=self.on_logout)
-        # logout_button.pack()
+        self.create_header()
+        self.create_main()
 
     def create_sidebar(self):
+        """create sidebar wigets"""
         self.__frames["Sidebar"] = Sidebar(self)
-        self.__frames["Sidebar"].place(x=0, y=0)
+        self.__frames["Sidebar"].grid(
+            column=0, row=0, rowspan=2, sticky="news")
 
     def create_header(self):
+        """create header wigets"""
         self.__frames["Header"] = Header(self)
-        self.__frames["Header"].place(x=0, y=0)
+        self.__frames["Header"].grid(column=1, row=0, sticky="news")
+
+    def create_main(self, section="Home"):
+        """create main wigets"""
+        self.__frames[section] = Sections[section](self)
+        self.__frames[section].grid(column=1, row=1, sticky="news")
