@@ -14,9 +14,10 @@ class LoginFrame(ctk.CTkFrame):
 
     def __init__(self, master, on_login):
         self.__loginSyle["master"] = master
-        super().__init__(
-            **self.__loginSyle
-        )
+        """create login frame"""
+        super().__init__(**self.__loginSyle)
+
+        """place the frame"""
         self.place(relx=0.5, rely=0.5, anchor="center")
         self.master = master
         self.on_login = on_login
@@ -43,12 +44,36 @@ class LoginFrame(ctk.CTkFrame):
     def login(self):
         """ database connection"""
         if self.username.get() == "" or self.password.get() == "":
-            tkinter.messagebox.showerror(
-                "Login Failed", "Please Fill the fields")
+            """display error notification"""
+            self.master.notification("Please Fill the fields")
+
+            """make the fields border red"""
+            self.username.configure(border_width=1, border_color="red")
+            self.password.configure(border_width=1, border_color="red")
+
+            """back to default configurations after 2s"""
+            self.master.after(2000, self.default_config)
+
         else:
+            """get user from database"""
             req = GetUser(self.username.get(), self.password.get())
+
+            """check if the user exists"""
             if req['status']:
+                """start login"""
                 self.on_login(req['userInfo'])
             else:
-                tkinter.messagebox.showerror(
-                    "Login Failed", f"Invalid: {req['message']}")
+                """display error notification"""
+                self.master.notification(f"Invalid: {req['message']}")
+
+                """make the fields border red"""
+                self.username.configure(border_width=1, border_color="red")
+                self.password.configure(border_width=1, border_color="red")
+
+                """back to default configurations after 2s"""
+                self.master.after(2000, self.default_config)
+
+    def default_config(self):
+        """default confurations"""
+        self.username.configure(border_width=0)
+        self.password.configure(border_width=0)

@@ -14,7 +14,6 @@ Sections = {
 
 
 class DashboardFrame(ctk.CTkFrame):
-    userId = ""
     __frames = {}
 
     def __init__(self, master, on_logout, userInfo):
@@ -22,7 +21,6 @@ class DashboardFrame(ctk.CTkFrame):
 
         self.userInfo = userInfo
         self.on_logout = on_logout
-
 
         """split the width"""
         self.columnconfigure(0, weight=1)
@@ -33,7 +31,6 @@ class DashboardFrame(ctk.CTkFrame):
         self.rowconfigure(1, weight=100)
 
         """create wigets"""
-
         self.create_sidebar()
         self.create_header()
         self.create_main()
