@@ -3,7 +3,9 @@ from models import storage
 
 
 def GetUser(username, password):
-    """method for getting the user, and check if the username and password are correct"""
+    """method for getting the user, and check if the 
+    username and password are correct"""
+
     status = False
     message = 'Username not exist'
     userInfo = ""
