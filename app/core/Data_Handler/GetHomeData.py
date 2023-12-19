@@ -33,20 +33,39 @@ def getStatistic():
 def getLastReservations():
     """methode that returns the last 4 reservations"""
 
-    LastReservations = ()
+    LastReservations = []
     session = storage.session()
+    obj = {'carName': '', 'matricule': '', 'carImage': '', 'carId': '',
+           'customerId': '', 'customerName': '', 'RevAmount': 0, 'RevDate': ''}
+
     Reservations = session.query(Reservation).order_by(
         Reservation.created_at.desc()).limit(4)
-    # for rev in Reservations:
-    #     pass
+    for rev in Reservations:
+        data = obj
+        customer = storage.getById(Customer, rev.customer_id)
+        car = storage.getById(Car, rev.car_id)
+
+        data['carName'] = car.brand
+        data['matricule'] = car.matricule
+        data['carImage'] = car.image
+        data['carId'] = car.id
+        data['customerId'] = customer.id
+        data['customerName'] = customer.full_name
+        data['RevAmount'] = rev.amount
+        data['RevDate'] = rev.created_at
+        LastReservations.append(data)
     return LastReservations
 
 
 def getTopCustomers():
     """methode that return the top 4 Customers
     based in number of Reservations"""
-
+    TopCustomers = []
     session = storage.session()
-    TopCustomers = session.query(Customer).order_by(
+    customers = session.query(Customer).order_by(
         Customer.num_of_res.desc()).limit(4)
+    for cus in customers:
+        data = cus.to_dict()
+        TopCustomers.append(data)
+    print(TopCustomers)
     return TopCustomers
