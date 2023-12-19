@@ -8,11 +8,17 @@ class Header(ctk.CTkFrame):
         super().__init__(
             master,
             fg_color="#A7FBFE",
-            bg_color="#A7FBFE",
-            height=70
+            bg_color="#A7FBFE"
         )
+        self.columnconfigure(0, weight=50)
+        self.columnconfigure(1, weight=1)
+        self.columnconfigure(2, weight=1)
+        self.rowconfigure(0, weight=1)
 
         """app name"""
-        # name_label = ctk.CTkLabel(
-        #     self, text="CMS", font=("", 22), text_color="white")
-        # name_label.place(relx=0.5, rely=0.05, anchor="center")
+        username_label = ctk.CTkLabel(
+            self, text=f"{master.userInfo['userName']}\n{master.userInfo['role']}", font=("", 22), text_color="white")
+        username_label.grid(column=1)
+        profile_label = ctk.CTkButton(
+            self, text="", font=("", 13), text_color="white", corner_radius=500, height=30, width=30)
+        profile_label.grid(row=0, column=2, rowspan=1, sticky="n")
