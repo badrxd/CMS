@@ -37,9 +37,9 @@ class App(ctk.CTk):
         self.frames["LoginFrame"].place(
             relx=0.5, rely=0.5, anchor="center")
 
-    def show_dashboard(self, userId):
+    def show_dashboard(self, userInfo):
         self.frames["DashboardFrame"] = DashboardFrame(
-            self, self.show_login, userId)
+            self, self.show_login, userInfo)
         self.frames["LoginFrame"].destroy()
         self.frames["DashboardFrame"].pack()
 

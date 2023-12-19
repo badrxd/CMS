@@ -8,6 +8,7 @@ from sqlalchemy import func
 
 def getStatistic():
     session = storage.session()
+
     data = {'cars': 0, 'reservations': 0,
             'customers': 0, 'mounth_income': 0}
 
