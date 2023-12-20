@@ -9,7 +9,7 @@ class LoginFrame(ctk.CTkFrame):
         "corner_radius": 7,
         "width": 220,
         "height": 390,
-        "fg_color": "#758CFE"
+        "fg_color": "#758CFE",
     }
 
     def __init__(self, master, on_login):
@@ -23,7 +23,7 @@ class LoginFrame(ctk.CTkFrame):
         self.on_login = on_login
 
         name_label = ctk.CTkLabel(
-            self, text="Login", font=("", 32), text_color="white")
+            self, text="Login", font=("", 32), text_color="white", bg_color="#758CFE")
         name_label.pack(pady=(20, 0), padx=20)
 
         """username input"""
@@ -38,14 +38,14 @@ class LoginFrame(ctk.CTkFrame):
 
         """login button"""
         button = ctk.CTkButton(
-            self, text="Login", fg_color="#3DAF8D", border_width=1, border_color="white", hover_color="#4C917D", command=self.login, font=("", 16), height=40)
+            self, text="Login", fg_color="#3DAF8D", bg_color="#758CFE", border_width=1, border_color="white", hover_color="#4C917D", command=self.login, font=("", 16), height=40)
         button.pack(pady=(10, 50), padx=20)
 
     def login(self):
         """ database connection"""
         if self.username.get() == "" or self.password.get() == "":
             """display error notification"""
-            self.master.notification("Please Fill the fields")
+            self.master.notification("Please Fill the fields", "Error")
 
             """make the fields border red"""
             self.username.configure(border_width=1, border_color="red")
@@ -61,10 +61,13 @@ class LoginFrame(ctk.CTkFrame):
             """check if the user exists"""
             if req['status']:
                 """start login"""
+                self.master.notification(
+                    req['message'], "Success")
                 self.on_login(req['userInfo'])
             else:
                 """display error notification"""
-                self.master.notification(f"Invalid: {req['message']}")
+                self.master.notification(
+                    req['message'], "Error")
 
                 """make the fields border red"""
                 self.username.configure(border_width=1, border_color="red")

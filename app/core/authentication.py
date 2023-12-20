@@ -13,7 +13,7 @@ def GetUser(username, password):
     for user in users.values():
         if user.userName == username:
             if user.password == password:
-                message = ''
+                message = f'Login success wellcome {user.fullName}'
                 status = True
                 userInfo = user.to_dict()
             else:
