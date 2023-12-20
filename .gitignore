@@ -4,3 +4,4 @@ __pycache__
 *.sh
 maincopy.py
 testbaseModel.py
+imgUpload.py
