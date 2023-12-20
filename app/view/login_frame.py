@@ -12,7 +12,7 @@ class LoginFrame(ctk.CTkFrame):
         "fg_color": "#758CFE",
     }
 
-    def __init__(self, master, on_login):
+    def __init__(self, master):
         self.__loginSyle["master"] = master
         """create login frame"""
         super().__init__(**self.__loginSyle)
@@ -20,7 +20,6 @@ class LoginFrame(ctk.CTkFrame):
         """place the frame"""
         self.place(relx=0.5, rely=0.5, anchor="center")
         self.master = master
-        self.on_login = on_login
 
         name_label = ctk.CTkLabel(
             self, text="Login", font=("", 32), text_color="white", bg_color="#758CFE")
@@ -63,7 +62,7 @@ class LoginFrame(ctk.CTkFrame):
                 """start login"""
                 self.master.notification(
                     req['message'], "Success")
-                self.on_login(req['userInfo'])
+                self.master.show_dashboard(req['userInfo'])
             else:
                 """display error notification"""
                 self.master.notification(

@@ -16,11 +16,11 @@ Sections = {
 class DashboardFrame(ctk.CTkFrame):
     __frames = {}
 
-    def __init__(self, master, on_logout, userInfo):
+    def __init__(self, master, userInfo):
         super().__init__(master)
 
         self.userInfo = userInfo
-        self.on_logout = on_logout
+        self.on_logout = master.show_login
 
         """split the width"""
         self.columnconfigure(0, weight=1)
