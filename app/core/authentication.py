@@ -3,7 +3,7 @@ from models import storage
 
 
 def GetUser(username, password):
-    """method for getting the user, and check if the 
+    """method for getting the user, and check if the
     username and password are correct"""
 
     status = False
@@ -13,7 +13,7 @@ def GetUser(username, password):
     for user in users.values():
         if user.userName == username:
             if user.password == password:
-                message = f'Login success wellcome {user.fullName}'
+                message = f'Wellcome {user.fullName}'
                 status = True
                 userInfo = user.to_dict()
             else:

@@ -2,6 +2,7 @@ import customtkinter as ctk
 from PIL import Image
 from .login_frame import LoginFrame
 from .dashboard_frame import DashboardFrame
+from .global_style import GStyle
 
 
 """ Modes: System (standard), Dark, Light"""
@@ -32,6 +33,9 @@ class App(ctk.CTk):
         self.columnconfigure(0, weight=1)
         self.rowconfigure(0, weight=1)
 
+        background = ctk.CTkFrame(self, fg_color=GStyle.bg, bg_color=GStyle.bg)
+        background.grid(row=0, column=0, sticky="news")
+
         """create login frame"""
         self.show_login()
 
@@ -54,7 +58,7 @@ class App(ctk.CTk):
         """show dashboard frame"""
         self.__frames["DashboardFrame"].grid(row=0, column=0, sticky="nwes")
 
-    def notification(self, txt, s):
+    def notification(self, txt, s, current_bg=""):
         status = {
             'Primary': {"fgc": "white"},
             'Secondary': {"fgc": "#FFCBD1"},
@@ -65,7 +69,6 @@ class App(ctk.CTk):
             'Light': {"fgc": "#DE0A26", "c": "white"},
             'Dark': {"fgc": "#DE0A26", "c": "white"}
         }
-
         """check if there is an old popup then destroy it"""
         if hasattr(self, "popup"):
             self.popup.destroy()
@@ -82,8 +85,11 @@ class App(ctk.CTk):
         """
         w = 300
         h = int(50 + (len(txt)/23) * 20)
+        xp = self.winfo_x() + self.winfo_width() - 300
+        yp = self.winfo_y() + self.winfo_height() - 100
+
         self.popup.geometry(
-            f"{w}x{h}+{self.winfo_x()+ 50}+{self.winfo_y() + 50}")
+            f"{w}x{h}+{xp}+{yp}")
 
         """Splite the popup"""
         self.popup.columnconfigure(0, weight=1)
@@ -91,7 +97,7 @@ class App(ctk.CTk):
 
         """create and place a notification frame"""
         notif = ctk.CTkFrame(
-            self.popup, corner_radius=7, fg_color=status[s]["fgc"], bg_color="transparent"
+            self.popup, corner_radius=7, fg_color=status[s]["fgc"], bg_color=current_bg
         )
         notif.grid(column=0, row=0, sticky="news")
 
