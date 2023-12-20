@@ -7,6 +7,7 @@ from models.reservation import Reservation
 from models.car import Car
 from models.customer import Customer
 from models.revenue import Revenue
+from models.settings import Settings
 
 
 classes = {
@@ -14,7 +15,8 @@ classes = {
     "Car": Car,
     "Reservation": Reservation,
     "Reservation": Customer,
-    "Revenue": Revenue
+    "Revenue": Revenue,
+    "Settings": Settings
 }
 
 
