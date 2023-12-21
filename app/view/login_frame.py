@@ -2,7 +2,7 @@ import customtkinter as ctk
 import tkinter
 import tkinter.messagebox
 from app.core.authentication import GetUser
-from .global_style import GStyle
+from .global_style import GStyle, Style
 
 
 class LoginFrame(ctk.CTkFrame):
@@ -17,9 +17,7 @@ class LoginFrame(ctk.CTkFrame):
     def __init__(self, master):
         self.__loginSyle["master"] = master
         """create login frame"""
-
         super().__init__(**self.__loginSyle)
-
         """place the frame"""
         self.place(relx=0.5, rely=0.5, anchor="center")
         self.master = master
@@ -44,6 +42,10 @@ class LoginFrame(ctk.CTkFrame):
         button.pack(pady=(10, 50), padx=20)
 
     def login(self):
+        # dark = not self.GStyle.isDark
+        # self.GStyle = Style(dark)
+        # self.configure(fg_color=self.GStyle.bg)
+        # print(self.GStyle.isDark)
         """ database connection"""
         if self.username.get() == "" or self.password.get() == "":
             """display error notification"""
