@@ -12,10 +12,11 @@ class Settings(BaseModel, Base):
     path_logo = Column(String(255), nullable=False)
     currency = Column(String(10), nullable=False)
     images_path = Column(String(255), nullable=False,
-                         default='D:/crms/images')
+                         default='D:\\crms\\images')
     developers = Column(String(255), nullable=False)
     is_dark = Column(Boolean, nullable=False, default=False)
     backup_path = Column(String(255), nullable=False,
-                         default='D:/crms/backups')
+                         default='D:\\crms\\backups')
     report_path = Column(String(255), nullable=False,
-                         default='D:/crms/reports')
+                         default='D:\\crms\\reports')
+    language = Column(String(20), nullable=False, default='en')
