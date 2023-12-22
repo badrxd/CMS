@@ -19,13 +19,24 @@ class Home(ctk.CTkFrame):
         self.rowconfigure(1, weight=1)
 
         boxes = ProCTkScrollableFrame(
-            self, fg_color=GStyle.bg, corner_radius=0, scrollbar_button_color=GStyle.header_bg, orientation="horizontal")
+            self,
+            fg_color=GStyle.bg,
+            corner_radius=0,
+            scrollbar_button_color=GStyle.bg,
+            scrollbar_button_hover_color=GStyle.header_bg,
+            orientation="horizontal"
+        )
         boxes.grid(row=0, column=0, sticky="news")
 
         self.short_info(boxes)
 
         tables = ProCTkScrollableFrame(
-            self, fg_color=GStyle.bg, corner_radius=0, scrollbar_button_color=GStyle.header_bg)
+            self,
+            fg_color=GStyle.bg,
+            corner_radius=0,
+            scrollbar_button_color=GStyle.bg,
+            scrollbar_button_hover_color=GStyle.header_bg
+        )
         tables.grid(row=1, column=0, sticky="news")
 
         self.create_tables(tables)

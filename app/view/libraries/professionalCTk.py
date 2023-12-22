@@ -144,6 +144,7 @@ class ProCTkScrollableFrame(ctk.CTkScrollableFrame):
                  border_color: str | Tuple[str, str] | None = None,
                  scrollbar_fg_color: str | Tuple[str, str] | None = None,
                  scrollbar_size: int = 10,
+                 scrollbar_hover_size: int = 10,
                  scrollbar_button_color: str | Tuple[str, str] | None = None,
                  scrollbar_button_hover_color: str | Tuple[str,
                                                            str] | None = None,
@@ -156,6 +157,7 @@ class ProCTkScrollableFrame(ctk.CTkScrollableFrame):
                                       'horizontal'] = "vertical"):
         super().__init__(master, width, height, corner_radius, border_width, bg_color, fg_color, border_color, scrollbar_fg_color,
                          scrollbar_button_color, scrollbar_button_hover_color, label_fg_color, label_text_color, label_text, label_font, label_anchor, orientation)
+        self.scrollbar_hover_size = scrollbar_hover_size
 
         if orientation == "vertical":
             self._scrollbar.configure(
