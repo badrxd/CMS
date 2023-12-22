@@ -52,6 +52,7 @@ def getLastReservations():
         data['customerId'] = customer.id
         data['customerName'] = customer.full_name
         data['RevAmount'] = rev.amount
+        data['Confirmed'] = rev.confirmed
         data['RevDate'] = rev.created_at
         LastReservations.append(data)
     return LastReservations

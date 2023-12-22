@@ -13,4 +13,5 @@ class User(BaseModel, Base):
     fullName = Column(String(60), nullable=False)
     isBlocked = Column(Boolean, nullable=False, default=False)
     role = Column(String(60), nullable=False)
+    # gender = Column(String(60), nullable=False)
     secretKey = Column(String(60), nullable=False, unique=True)
