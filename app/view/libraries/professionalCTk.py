@@ -1,4 +1,7 @@
+from typing import Literal, Optional, Tuple, Union
+from typing_extensions import Literal
 import customtkinter as ctk
+from customtkinter.windows.widgets.font import CTkFont
 
 
 class ProCTkTable:
@@ -124,3 +127,45 @@ class ProCTkTable:
                     anchor=self.other["text_anchor"] if "text_anchor" in self.other else "w")
                 l.grid(row=0, column=j, padx=20,
                        sticky=self.other["text_sticky"] if "text_sticky" in self.other else "ew")
+
+
+class ProCTkScrollableFrame(ctk.CTkScrollableFrame):
+
+    """this class adds more cutomizing to Scrollable frame CTk class"""
+
+    def __init__(self,
+                 master: any,
+                 width: int = 200,
+                 height: int = 200,
+                 corner_radius: int | str | None = None,
+                 border_width: int | str | None = None,
+                 bg_color: str | Tuple[str, str] = "transparent",
+                 fg_color: str | Tuple[str, str] | None = None,
+                 border_color: str | Tuple[str, str] | None = None,
+                 scrollbar_fg_color: str | Tuple[str, str] | None = None,
+                 scrollbar_size: int = 10,
+                 scrollbar_button_color: str | Tuple[str, str] | None = None,
+                 scrollbar_button_hover_color: str | Tuple[str,
+                                                           str] | None = None,
+                 label_fg_color: str | Tuple[str, str] | None = None,
+                 label_text_color: str | Tuple[str, str] | None = None,
+                 label_text: str = "",
+                 label_font: tuple | CTkFont | None = None,
+                 label_anchor: str = "center",
+                 orientation: Literal['vertical',
+                                      'horizontal'] = "vertical"):
+        super().__init__(master, width, height, corner_radius, border_width, bg_color, fg_color, border_color, scrollbar_fg_color,
+                         scrollbar_button_color, scrollbar_button_hover_color, label_fg_color, label_text_color, label_text, label_font, label_anchor, orientation)
+
+        if orientation == "vertical":
+            self._scrollbar.configure(
+                width=scrollbar_size, command=self._yviewConfigure)
+        elif orientation == "horizontal":
+            self._scrollbar.configure(
+                height=scrollbar_size, command=self._xviewConfigure)
+
+    def _yviewConfigure(self, *args):
+        self._parent_canvas.yview(*args)
+
+    def _xviewConfigure(self, *args):
+        self._parent_canvas.xview(*args)

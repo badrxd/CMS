@@ -2,7 +2,7 @@ import customtkinter as ctk
 import tkinter
 import tkinter.messagebox
 from ..global_style import GStyle
-from ..libraries.professionalCTk import ProCTkTable
+from ..libraries.professionalCTk import ProCTkTable, ProCTkScrollableFrame
 from PIL import Image
 
 
@@ -18,13 +18,13 @@ class Home(ctk.CTkFrame):
         self.rowconfigure(0, weight=1)
         self.rowconfigure(1, weight=1)
 
-        boxes = ctk.CTkScrollableFrame(
+        boxes = ProCTkScrollableFrame(
             self, fg_color=GStyle.bg, corner_radius=0, scrollbar_button_color=GStyle.header_bg, orientation="horizontal")
         boxes.grid(row=0, column=0, sticky="news")
 
         self.short_info(boxes)
 
-        tables = ctk.CTkScrollableFrame(
+        tables = ProCTkScrollableFrame(
             self, fg_color=GStyle.bg, corner_radius=0, scrollbar_button_color=GStyle.header_bg)
         tables.grid(row=1, column=0, sticky="news")
 
