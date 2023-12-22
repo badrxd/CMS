@@ -1,24 +1,27 @@
 import customtkinter as ctk
 import tkinter
 import tkinter.messagebox
+from ..global_style import GStyle
 
 
 class Header(ctk.CTkFrame):
     def __init__(self, master):
         super().__init__(
             master,
-            fg_color="#A7FBFE",
-            bg_color="#A7FBFE"
+            fg_color=GStyle.header_bg,
+            bg_color=GStyle.header_bg,
+            corner_radius=0
         )
         self.columnconfigure(0, weight=50)
         self.columnconfigure(1, weight=1)
         self.columnconfigure(2, weight=1)
         self.rowconfigure(0, weight=1)
+        self.rowconfigure(1, weight=1)
 
         """app name"""
         username_label = ctk.CTkLabel(
-            self, text=f"{master.userInfo['userName']}\n{master.userInfo['role']}", font=("", 22), text_color="white")
-        username_label.grid(column=1)
-        profile_label = ctk.CTkButton(
-            self, text="", font=("", 13), text_color="white", corner_radius=500, height=30, width=30)
-        profile_label.grid(row=0, column=2, rowspan=1, sticky="n")
+            self, text=f"{master.userInfo['fullName']}", font=(GStyle.font_family, GStyle.meduim), text_color=GStyle.head_font_color)
+        username_label.grid(column=1, row=0, sticky="en")
+        username_label = ctk.CTkLabel(
+            self, text=f"{master.userInfo['role']}", font=(GStyle.font_family, GStyle.small), text_color=GStyle.head_font_color)
+        username_label.grid(column=1, row=1, sticky="en")

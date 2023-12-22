@@ -7,6 +7,7 @@ from models.reservation import Reservation
 from models.car import Car
 from models.customer import Customer
 from models.revenue import Revenue
+from models.settings import Settings
 
 
 classes = {
@@ -14,7 +15,8 @@ classes = {
     "Car": Car,
     "Reservation": Reservation,
     "Reservation": Customer,
-    "Revenue": Revenue
+    "Revenue": Revenue,
+    "Settings": Settings
 }
 
 
@@ -68,7 +70,18 @@ class DBStorage:
         """call remove() method on the private session attribute"""
         self.__session.remove()
 
-    # TODO(def get(self , cls, id))
+    def getById(self, cls, id):
+        """return a model by id"""
+        data = self.__session.query(cls).filter(id == id).first()
+        return data
+
+    # TODO(def getFirst(self, cls))
+    # def getFirst(self, cls):
+    #     """return a first by id"""
+    #     data = self.__session.query(cls).order_by(
+    #         cls.created_at.desc()).first()
+    #     return data
+
     @property
     def session(self):
         return self.__session

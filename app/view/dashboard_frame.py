@@ -1,9 +1,8 @@
 import customtkinter as ctk
 import tkinter
 import tkinter.messagebox
-
+from .global_style import GStyle
 from app.core.Data_Handler.GetHomeData import getStatistic
-
 from .components.sidebar import Sidebar
 from .components.header import Header
 from .components.home import Home
@@ -16,11 +15,11 @@ Sections = {
 class DashboardFrame(ctk.CTkFrame):
     __frames = {}
 
-    def __init__(self, master, on_logout, userInfo):
+    def __init__(self, master, userInfo):
         super().__init__(master)
 
         self.userInfo = userInfo
-        self.on_logout = on_logout
+        self.on_logout = master.show_login
 
         """split the width"""
         self.columnconfigure(0, weight=1)
@@ -50,3 +49,7 @@ class DashboardFrame(ctk.CTkFrame):
         """create main wigets"""
         self.__frames[section] = Sections[section](self)
         self.__frames[section].grid(column=1, row=1, sticky="news")
+        nav = getattr(self.__frames["Sidebar"],
+                      "{}_label".format(section.lower()))
+        nav.configure(fg_color=GStyle.buttons_hover_color,
+                      bg_color=GStyle.buttons_hover_color)

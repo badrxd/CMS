@@ -2,6 +2,7 @@ import customtkinter as ctk
 import tkinter
 import tkinter.messagebox
 from app.core.authentication import GetUser
+from .global_style import GStyle, Style
 
 
 class LoginFrame(ctk.CTkFrame):
@@ -9,43 +10,47 @@ class LoginFrame(ctk.CTkFrame):
         "corner_radius": 7,
         "width": 220,
         "height": 390,
-        "fg_color": "#758CFE"
+        "fg_color": GStyle.login_bg,
+        "bg_color": GStyle.bg
     }
 
-    def __init__(self, master, on_login):
+    def __init__(self, master):
         self.__loginSyle["master"] = master
         """create login frame"""
         super().__init__(**self.__loginSyle)
-
         """place the frame"""
         self.place(relx=0.5, rely=0.5, anchor="center")
         self.master = master
-        self.on_login = on_login
 
         name_label = ctk.CTkLabel(
-            self, text="Login", font=("", 32), text_color="white")
+            self, text="Login", font=(GStyle.font_family, 32, "bold"), text_color=GStyle.login_font_color, bg_color=GStyle.login_bg)
         name_label.pack(pady=(20, 0), padx=20)
 
         """username input"""
         self.username = ctk.CTkEntry(
-            self, placeholder_text="Enter Your Username", border_width=0, width=320, height=40, font=("", 16))
+            self, placeholder_text_color=GStyle.input_font_color, placeholder_text="Enter Your Username", border_width=0, width=320, height=40, font=(GStyle.font_family, GStyle.input_font_size))
         self.username.pack(pady=(50, 10), padx=20)
 
         """passworld input"""
         self.password = ctk.CTkEntry(
-            self, placeholder_text="Enter Your Password", border_width=0, width=320, height=40, show="*", font=("", 16))
+            self, placeholder_text_color=GStyle.input_font_color, placeholder_text="Enter Your Password", border_width=0, width=320, height=40, show="*", font=("", GStyle.input_font_size))
         self.password.pack(pady=(10, 50), padx=20)
 
         """login button"""
         button = ctk.CTkButton(
-            self, text="Login", fg_color="#3DAF8D", border_width=1, border_color="white", hover_color="#4C917D", command=self.login, font=("", 16), height=40)
+            self, text="Login", fg_color=GStyle.buttons_bg, bg_color=GStyle.login_bg, hover_color=GStyle.buttons_hover_color, command=self.login, font=(GStyle.font_family, 16), height=40, width=320)
         button.pack(pady=(10, 50), padx=20)
 
     def login(self):
+        # dark = not self.GStyle.isDark
+        # self.GStyle = Style(dark)
+        # self.configure(fg_color=self.GStyle.bg)
+        # print(self.GStyle.isDark)
         """ database connection"""
         if self.username.get() == "" or self.password.get() == "":
             """display error notification"""
-            self.master.notification("Please Fill the fields")
+            self.master.notification(
+                "Please Fill the fields", "Error", GStyle.bg)
 
             """make the fields border red"""
             self.username.configure(border_width=1, border_color="red")
@@ -61,10 +66,13 @@ class LoginFrame(ctk.CTkFrame):
             """check if the user exists"""
             if req['status']:
                 """start login"""
-                self.on_login(req['userInfo'])
+                self.master.notification(
+                    req['message'], "Success", GStyle.bg)
+                self.master.show_dashboard(req['userInfo'])
             else:
                 """display error notification"""
-                self.master.notification(f"Invalid: {req['message']}")
+                self.master.notification(
+                    req['message'], "Error", GStyle.bg)
 
                 """make the fields border red"""
                 self.username.configure(border_width=1, border_color="red")

@@ -19,3 +19,4 @@ class Customer(BaseModel, Base):
     num_of_res = Column(Integer, nullable=False, default=0)
     spending = Column(Integer, nullable=False, default=0)
     reservations = relationship('Reservation', backref='customer')
+    # bloking_reason = Column(String(255), default="")
