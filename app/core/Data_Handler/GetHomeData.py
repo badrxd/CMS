@@ -36,7 +36,7 @@ def getLastReservations():
     LastReservations = []
     session = storage.session()
     obj = {'carName': '', 'matricule': '', 'carImage': '', 'carId': '',
-           'customerId': '', 'customerName': '', 'RevAmount': 0, 'RevDate': ''}
+           'customerId': '', 'customerName': '', 'revAmount': 0, 'revDate': '', 'status': ''}
 
     Reservations = session.query(Reservation).order_by(
         Reservation.created_at.desc()).limit(4)
@@ -51,9 +51,9 @@ def getLastReservations():
         data['carId'] = car.id
         data['customerId'] = customer.id
         data['customerName'] = customer.full_name
-        data['RevAmount'] = rev.amount
-        data['Confirmed'] = rev.confirmed
-        data['RevDate'] = rev.created_at
+        data['revAmount'] = rev.amount
+        data['status'] = rev.status
+        data['revDate'] = rev.created_at
         LastReservations.append(data)
     return LastReservations
 

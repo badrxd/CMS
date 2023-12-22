@@ -1,36 +1,15 @@
-import os
 from models.customer import Customer
 from models.settings import Settings
 from models import storage
-import shutil
+from app.core.image_handler import ImageName, SaveImage
+from models import storage
 
 
-def ImageName(key, path, name=None):
-    file_name = os.path.basename(path)
-    extention = file_name.split('.')[-1]
-    name = ''
-    if key == 'card_id_image' or key == 'driver_id_image':
-        words = key.split('_')
-        name = f'{words[0]}-{words[1]}.{extention}'
-    return name.capitalize()
-
-
-def SaveImage(file_path, section, id, path, img_name):
-    destination_path = os.path.join(path, section, id, img_name)
-    os.makedirs(os.path.join(path, section, id,), exist_ok=True)
-    try:
-        if section == 'customers':
-            shutil.copyfile(file_path, destination_path)
-    except Exception as e:
-        return (f"Error: {e}")
-
-
-def CreatUser(args, images):
+def CreatCustomer(args, images):
+    """ """
     customer = None
     images_path = None
     session = storage.session()
-
-    """ """
     try:
         if len(images) > 0:
             for i in range(len(images)):
@@ -49,11 +28,42 @@ def CreatUser(args, images):
         if hasattr(customer, 'driver_id_image'):
             SaveImage(images[1].get('driver_id_image'),
                       section="customers", id=customer.id, path=images_path, img_name=customer.driver_id_image)
-
+            # customer.save()
+        return ({'error': False})
     except Exception as e:
         print(f"Error: {e}")
         return (f"Error: {e}")
 
 
-CreatUser({'full_name': 'badr', 'phone': '2654845548',
-          'card_id': '', 'driver_id': ''}, images=[{'card_id_image': r'C:\Users\Badr\Downloads\maxresdefault.jpg'}, {'driver_id_image': r'C:\Users\Badr\Downloads\maxresdefault.jpg'}])
+CreatCustomer({'full_name': 'badr', 'phone': '2654845548',
+               'card_id': '', 'driver_id': ''}, images=[{'card_id_image': r'C:\Users\Badr\Downloads\maxresdefault.jpg'}, {'driver_id_image': r'C:\Users\Badr\Downloads\maxresdefault.jpg'}])
+
+
+def updateCustomerInfo(args, images, id):
+    customer = storage.getById(Customer, id=id)
+
+    try:
+        if customer is None:
+            raise ValueError(f"Customer with provided id not found.")
+
+        # images_path = session.query(Settings).first()
+        images_path = 'D:\\crms\\images'
+        if len(images) > 0:
+            for i in range(len(images)):
+                key = list(images[i].keys())[0]
+                path = images[i].get(key)
+                if path != '':
+                    img_name = ImageName(key, path)
+                    args.update({key: img_name})
+                    save = SaveImage(path, section="customers",
+                                     id=customer.id, path=images_path, img_name=img_name)
+                    if save.get('error'):
+                        raise Exception(save.get('message'))
+        for key, value in args.items():
+            if value != '':
+                setattr(customer, key, value)
+        # customer.save()
+        return ({'error': False})
+    except Exception as e:
+        print(e)
+        return {'error': True, 'message': e}
