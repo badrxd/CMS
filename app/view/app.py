@@ -28,6 +28,7 @@ class App(ctk.CTk):
         self.width = self.winfo_screenwidth() - 100
         self.height = self.winfo_screenheight() - 100
         self.geometry(f"{self.width}x{self.height}")
+        self.minsize(500, 500)
 
         """split the window"""
         self.columnconfigure(0, weight=1)

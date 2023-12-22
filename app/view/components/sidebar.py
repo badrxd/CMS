@@ -34,37 +34,37 @@ class Sidebar(ctk.CTkFrame):
 
         """home"""
         self.home_label = ctk.CTkButton(
-            self, text="home", font=(GStyle.font_family, GStyle.meduim), text_color=GStyle.head_font_color, bg_color=GStyle.sidebar_bg, fg_color=GStyle.sidebar_bg, hover_color=GStyle.header_bg, corner_radius=0)
+            self, text="home", anchor="w", font=(GStyle.font_family, GStyle.meduim), text_color=GStyle.head_font_color, bg_color=GStyle.sidebar_bg, fg_color=GStyle.sidebar_bg, hover_color=GStyle.header_bg, corner_radius=0)
         # home_label.pack(pady=20, padx=0)
         self.home_label.grid(row=1, column=0, sticky="new")
 
         """cars"""
         self.car_label = ctk.CTkButton(
-            self, text="cars", font=(GStyle.font_family, GStyle.meduim), text_color=GStyle.head_font_color, bg_color=GStyle.sidebar_bg, fg_color=GStyle.sidebar_bg, hover_color=GStyle.header_bg, corner_radius=0)
+            self, text="cars", anchor="w", font=(GStyle.font_family, GStyle.meduim), text_color=GStyle.head_font_color, bg_color=GStyle.sidebar_bg, fg_color=GStyle.sidebar_bg, hover_color=GStyle.header_bg, corner_radius=0)
         # cars_label.pack(pady=20, padx=0)
         self.car_label.grid(row=2, column=0, sticky="new")
 
         """reservations"""
         self.reservation_label = ctk.CTkButton(
-            self, text="reservations", font=(GStyle.font_family, GStyle.meduim), text_color=GStyle.head_font_color, bg_color=GStyle.sidebar_bg, fg_color=GStyle.sidebar_bg, hover_color=GStyle.header_bg, corner_radius=0)
+            self, text="reservations", anchor="w", font=(GStyle.font_family, GStyle.meduim), text_color=GStyle.head_font_color, bg_color=GStyle.sidebar_bg, fg_color=GStyle.sidebar_bg, hover_color=GStyle.header_bg, corner_radius=0)
         # res_label.pack(pady=20, padx=0)
         self.reservation_label.grid(row=3, column=0, sticky="new")
 
         """revenue"""
         self.revenue_label = ctk.CTkButton(
-            self, text="revenue", font=(GStyle.font_family, GStyle.meduim), text_color=GStyle.head_font_color, bg_color=GStyle.sidebar_bg, fg_color=GStyle.sidebar_bg, hover_color=GStyle.header_bg, corner_radius=0)
+            self, text="revenue", anchor="w", font=(GStyle.font_family, GStyle.meduim), text_color=GStyle.head_font_color, bg_color=GStyle.sidebar_bg, fg_color=GStyle.sidebar_bg, hover_color=GStyle.header_bg, corner_radius=0)
         # revenue_label.pack(pady=20, padx=0)
         self.revenue_label.grid(row=4, column=0, sticky="new")
 
         """customers"""
         self.customer_label = ctk.CTkButton(
-            self, text="customers", font=(GStyle.font_family, GStyle.meduim), text_color=GStyle.head_font_color, bg_color=GStyle.sidebar_bg, fg_color=GStyle.sidebar_bg, hover_color=GStyle.header_bg, corner_radius=0)
+            self, text="customers", anchor="w", font=(GStyle.font_family, GStyle.meduim), text_color=GStyle.head_font_color, bg_color=GStyle.sidebar_bg, fg_color=GStyle.sidebar_bg, hover_color=GStyle.header_bg, corner_radius=0)
         # customers_label.pack(pady=20, padx=0)
         self.customer_label.grid(row=5, column=0, sticky="new")
 
         """users"""
         self.user_label = ctk.CTkButton(
-            self, text="users", font=(GStyle.font_family, GStyle.meduim), text_color=GStyle.head_font_color, bg_color=GStyle.sidebar_bg, fg_color=GStyle.sidebar_bg, hover_color=GStyle.header_bg, corner_radius=0)
+            self, text="users", anchor="w", font=(GStyle.font_family, GStyle.meduim), text_color=GStyle.head_font_color, bg_color=GStyle.sidebar_bg, fg_color=GStyle.sidebar_bg, hover_color=GStyle.header_bg, corner_radius=0)
         # users_label.pack(pady=10, padx=0)
         self.user_label.grid(row=6, column=0, sticky="new")
 

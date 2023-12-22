@@ -11,7 +11,7 @@ class Home(ctk.CTkFrame):
         super().__init__(
             master,
             fg_color=GStyle.bg,
-            bg_color=GStyle.bg,
+            bg_color=GStyle.bg
         )
 
         self.columnconfigure(0, weight=1)
@@ -19,13 +19,13 @@ class Home(ctk.CTkFrame):
         self.rowconfigure(1, weight=1)
 
         boxes = ctk.CTkScrollableFrame(
-            self, fg_color=GStyle.bg, corner_radius=0, orientation="horizontal")
-        boxes.grid(row=0, column=0, columnspan=1, sticky="news")
+            self, fg_color=GStyle.bg, corner_radius=0, scrollbar_button_color=GStyle.header_bg, orientation="horizontal")
+        boxes.grid(row=0, column=0, sticky="news")
 
         self.short_info(boxes)
 
         tables = ctk.CTkScrollableFrame(
-            self, fg_color=GStyle.bg, corner_radius=0)
+            self, fg_color=GStyle.bg, corner_radius=0, scrollbar_button_color=GStyle.header_bg)
         tables.grid(row=1, column=0, sticky="news")
 
         self.create_tables(tables)
@@ -43,7 +43,7 @@ class Home(ctk.CTkFrame):
 
         """create an image object"""
         image = ctk.CTkImage(light_image=Image.open(
-            f"/home/omarnem/omar/CMS/resources/icons/{params['title']}.png"), size=(100, 100))
+            f"/home/omarnem/omar/CMS/resources/icons/{params['title']}.png"), size=(200, 200))
 
         """add the image to a wiget"""
         name_label = ctk.CTkLabel(
