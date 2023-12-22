@@ -48,7 +48,7 @@ class Home(ctk.CTkFrame):
         """add the image to a wiget"""
         name_label = ctk.CTkLabel(
             box, text="", image=image)
-        name_label.grid(row=0, column=0, padx=50)
+        name_label.grid(row=0, column=0, padx=5)
 
         title = ctk.CTkLabel(box, text=params["title"], font=(
             GStyle.frames_font_color, GStyle.large, "bold"), text_color=GStyle.font_color)
