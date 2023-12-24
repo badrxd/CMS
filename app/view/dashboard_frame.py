@@ -20,6 +20,7 @@ class DashboardFrame(ctk.CTkFrame):
 
         self.userInfo = userInfo
         self.on_logout = master.show_login
+        self.refresh = master.show_dashboard
 
         """split the width"""
         self.columnconfigure(0, weight=1)

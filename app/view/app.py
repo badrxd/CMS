@@ -15,6 +15,11 @@ class App(ctk.CTk):
     width = 0
     height = 0
 
+    """
+    frames holds the main frames
+    login page and
+    dashboard page
+    """
     __frames = {}
 
     def __init__(self):
@@ -34,16 +39,22 @@ class App(ctk.CTk):
         self.columnconfigure(0, weight=1)
         self.rowconfigure(0, weight=1)
 
-        background = ctk.CTkFrame(self, fg_color=GStyle.bg, bg_color=GStyle.bg)
-        background.grid(row=0, column=0, sticky="news")
-
-        """create login frame"""
+        """create a login page"""
         self.show_login()
 
     def show_login(self):
-        self.__frames["LoginFrame"] = LoginFrame(self)
+        """creat a background"""
+        background = ctk.CTkFrame(self, fg_color=GStyle.bg, bg_color=GStyle.bg)
+        background.grid(row=0, column=0, sticky="news")
+
+        """destroy dashboard frame if already exists"""
         if "DashboardFrame" in self.__frames:
             self.__frames["DashboardFrame"].destroy()
+
+        """create login frame"""
+        self.__frames["LoginFrame"] = LoginFrame(self)
+
+        """place the login frame"""
         self.__frames["LoginFrame"].place(
             relx=0.5, rely=0.5, anchor="center")
 
@@ -52,10 +63,15 @@ class App(ctk.CTk):
         creates dashboard frame
         and give it the user info
         """
+        """destroy dashboard frame if already exists"""
+        if "DashboardFrame" in self.__frames:
+            self.__frames["DashboardFrame"].destroy()
         self.__frames["DashboardFrame"] = DashboardFrame(
             self, userInfo)
         """destroy login frame"""
-        self.__frames["LoginFrame"].destroy()
+        if "LoginFrame" in self.__frames:
+            self.__frames["LoginFrame"].destroy()
+            del self.__frames["LoginFrame"]
         """show dashboard frame"""
         self.__frames["DashboardFrame"].grid(row=0, column=0, sticky="nwes")
 
