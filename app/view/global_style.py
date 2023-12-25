@@ -2,6 +2,7 @@
 
 class Style:
     isDark = bool()
+    icon = "/home/omarnem/omar/CMS/resources/icons/light-mode.png"
     large = 20
     meduim = 16
     small = 12
@@ -15,6 +16,7 @@ class Style:
     login_bg = "#0091D5"
     header_bg = "#1C4E80"
     sidebar_bg = "#0091D5"
+    sidebar_font_color = "#ecf0f1"
     frames_bg = "#ecf0f1"
     frames_font_color = "#0091D5"
     frames_border = "#0091D5"
@@ -27,21 +29,24 @@ class Style:
     def switch_mode(self):
         if not self.isDark:
             self.isDark = True
-            self.font_color = "#D4ADFC"
-            self.head_font_color = "#0C134F"
-            self.login_font_color = "#0C134F"
-            self.input_font_color = "#2c3e50"
-            self.bg = "#0C134F"
-            self.login_bg = "#1D267D"
-            self.header_bg = "#5C469C"
-            self.sidebar_bg = "#1D267D"
-            self.frames_bg = "#0C134F"
-            self.frames_font_color = "#1D267D"
-            self.frames_border = "#1D267D"
-            self.buttons_bg = "#5C469C"
-            self.buttons_hover_color = "#7E909A"
+            self.icon = "/home/omarnem/omar/CMS/resources/icons/dark-mode.png"
+            self.font_color = "#e2e3e6"
+            self.head_font_color = "#e2e3e6"
+            self.login_font_color = "#e2e3e6"
+            self.input_font_color = "#1f263c"
+            self.bg = "#161a2b"
+            self.login_bg = "#1f263c"
+            self.header_bg = "#1f263c"
+            self.sidebar_font_color = "#e2e3e6"
+            self.sidebar_bg = "#1f263c"
+            self.frames_bg = "#1f263c"
+            self.frames_font_color = "#e2e3e6"
+            self.frames_border = "#1f263c"
+            self.buttons_bg = "#161a2b"
+            self.buttons_hover_color = "#1f263c"
         else:
             self.isDark = False
+            self.icon = "/home/omarnem/omar/CMS/resources/icons/light-mode.png"
             self.font_color = Style.font_color
             self.head_font_color = Style.head_font_color
             self.login_font_color = Style.login_font_color
@@ -50,6 +55,7 @@ class Style:
             self.login_bg = Style.login_bg
             self.header_bg = Style.header_bg
             self.sidebar_bg = Style.sidebar_bg
+            self.sidebar_font_color = Style.sidebar_font_color
             self.frames_bg = Style.frames_bg
             self.frames_font_color = Style.frames_font_color
             self.frames_border = Style.frames_border

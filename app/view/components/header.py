@@ -1,6 +1,7 @@
 import customtkinter as ctk
 import tkinter
 import tkinter.messagebox
+from PIL import Image
 from ..global_style import GStyle
 
 
@@ -21,8 +22,12 @@ class Header(ctk.CTkFrame):
 
         """app name"""
 
+        """create an image object"""
+        image = ctk.CTkImage(light_image=Image.open(
+            GStyle.icon))
+
         bt = ctk.CTkButton(
-            self, width=20, text="light mode", corner_radius=500, fg_color=GStyle.bg, hover_color=GStyle.buttons_hover_color,
+            self, width=2, image=image, text="", corner_radius=500, fg_color=GStyle.header_bg, hover_color=GStyle.header_bg,
             command=self._change_mode)
         bt.grid(column=1, row=0, sticky="ns", pady=(10, 0))
 

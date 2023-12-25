@@ -2,7 +2,7 @@ import customtkinter as ctk
 import tkinter
 import tkinter.messagebox
 from ..global_style import GStyle
-from ..libraries.professionalCTk import ProCTkTable, ProCTkScrollableFrame
+from ..libraries.professionalCTk import ProCTkTable, ProCTkScrollableFrame, gradient
 from PIL import Image
 
 
@@ -43,31 +43,35 @@ class Home(ctk.CTkFrame):
 
     def create_box(self, master, **params):
         box = ctk.CTkFrame(master, fg_color=GStyle.frames_bg,
-                           border_color=GStyle.frames_border, border_width=1)
+                           border_color=GStyle.frames_border, border_width=1, width=500)
         box.grid(row=params["rpos"],
                  column=params["cpos"], sticky="news", padx=50)
 
         box.columnconfigure(0, weight=1)
-        box.rowconfigure(0, weight=1)
+        box.columnconfigure(1, weight=1)
+        # box.rowconfigure(0, weight=1)
         box.rowconfigure(1, weight=1)
         box.rowconfigure(2, weight=1)
 
-        """create an image object"""
-        image = ctk.CTkImage(light_image=Image.open(
-            f"/home/omarnem/omar/CMS/resources/icons/{params['title']}.png"), size=(200, 200))
+        # """create an image object"""
+        # image = ctk.CTkImage(light_image=Image.open(
+        #     f"/home/omarnem/omar/CMS/resources/icons/{params['title']}.png"), size=(200, 200))
 
-        """add the image to a wiget"""
-        name_label = ctk.CTkLabel(
-            box, text="", image=image)
-        name_label.grid(row=0, column=0, padx=5)
+        # """add the image to a wiget"""
+        # name_label = ctk.CTkLabel(
+        #     box, text="", image=image)
+        # name_label.grid(row=0, column=0, padx=5)
 
         title = ctk.CTkLabel(box, text=params["title"], font=(
             GStyle.frames_font_color, GStyle.large, "bold"), text_color=GStyle.font_color)
-        title.grid(row=1, column=0)
+        title.grid(row=1, column=0, padx=20)
         value = ctk.CTkLabel(
             box, text=params["value"], text_color=GStyle.font_color, font=(
                 GStyle.frames_font_color, GStyle.small))
         value.grid(row=2, column=0)
+
+        b = gradient(box, color=GStyle.frames_border, columns=20, inc=1).grid(
+            column=1, row=1, rowspan=2, sticky="news")
 
     def short_info(self, master):
         master.rowconfigure(0, weight=1)
@@ -102,37 +106,6 @@ class Home(ctk.CTkFrame):
         master.rowconfigure(3, weight=6)
         master.rowconfigure(4, weight=1)
 
-        ProCTkTable(
-            master,
-            rpos=1,
-            cpos=1,
-            pady=(40, 0),
-            title="Top Costumers",
-            title_color=GStyle.font_color,
-            text_color=GStyle.font_color,
-            head_fg_color=GStyle.header_bg,
-            head_bg_color=GStyle.header_bg,
-            head_text_color=GStyle.head_font_color,
-            transparent=GStyle.bg,
-            border_row=True,
-            data=self.json_to_table()
-        )
-        ProCTkTable(
-            master,
-            rpos=3,
-            cpos=1,
-            pady=40,
-            text_color=GStyle.font_color,
-            title_color=GStyle.font_color,
-            head_fg_color=GStyle.header_bg,
-            head_bg_color=GStyle.header_bg,
-            head_text_color=GStyle.head_font_color,
-            border_row=True,
-            title="Last Reservations", transparent=GStyle.bg,
-            data=self.json_to_table()
-        )
-
-    def json_to_table(self):
         json_data = [
             {
                 "name": "Laila Boutfilit",
@@ -159,12 +132,33 @@ class Home(ctk.CTkFrame):
                 "phone number": "0754682036"
             }
         ]
-        # TODO: call fuction that get the tables data
-        table = []
-        row = []
-        for header in json_data[0]:
-            row.append(header)
-        table.append(row)
-        for column in json_data:
-            table.append(list(column.values()))
-        return table
+
+        ProCTkTable(
+            master,
+            rpos=1,
+            cpos=1,
+            pady=(40, 0),
+            title="Top Costumers",
+            title_color=GStyle.font_color,
+            text_color=GStyle.font_color,
+            head_fg_color=GStyle.header_bg,
+            head_bg_color=GStyle.header_bg,
+            head_text_color=GStyle.head_font_color,
+            transparent=GStyle.bg,
+            border_row=True,
+            data=json_data
+        )
+        ProCTkTable(
+            master,
+            rpos=3,
+            cpos=1,
+            pady=40,
+            text_color=GStyle.font_color,
+            title_color=GStyle.font_color,
+            head_fg_color=GStyle.header_bg,
+            head_bg_color=GStyle.header_bg,
+            head_text_color=GStyle.head_font_color,
+            border_row=True,
+            title="Last Reservations", transparent=GStyle.bg,
+            data=json_data
+        )
