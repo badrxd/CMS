@@ -60,7 +60,7 @@ class ProCTkTable:
                  data=[],
                  **other):
 
-        self.data = data
+        self.data = self.json_to_table(data)
         self.other = other
 
         box = ctk.CTkFrame(master, fg_color=transparent)
@@ -128,6 +128,17 @@ class ProCTkTable:
                 l.grid(row=0, column=j, padx=20,
                        sticky=self.other["text_sticky"] if "text_sticky" in self.other else "ew")
 
+    def json_to_table(self, json_data):
+        # TODO: call fuction that get the tables data
+        table = []
+        row = []
+        for header in json_data[0]:
+            row.append(header)
+        table.append(row)
+        for column in json_data:
+            table.append(list(column.values()))
+        return table
+
 
 class ProCTkScrollableFrame(ctk.CTkScrollableFrame):
 
@@ -171,3 +182,44 @@ class ProCTkScrollableFrame(ctk.CTkScrollableFrame):
 
     def _xviewConfigure(self, *args):
         self._parent_canvas.xview(*args)
+
+
+def gradient(master,
+             color,
+             inc=2,
+             rows=1,
+             columns=100,
+             size=2,
+             width=10,
+             height=10):
+    c_inc = inc
+    color = int(color[1:], 16)
+
+    if rows <= 1:
+        global_frame = ctk.CTkFrame(master, width=width)
+        global_frame.rowconfigure(0, weight=1)
+        for i in range(columns):
+            global_frame.columnconfigure(i, weight=1)
+        for i in range(columns):
+            hexacolor = hex(color)[2:]
+            while len(hexacolor) < 6:
+                hexacolor = "0{}".format(hexacolor)
+            _frame = ctk.CTkFrame(
+                global_frame, fg_color=f"#{str(hexacolor)}", bg_color=f"#{str(hexacolor)}", width=size)
+            color += c_inc
+            _frame.grid(row=0, column=i, sticky="news")
+    else:
+        global_frame = ctk.CTkFrame(master, height=height)
+        global_frame.columnconfigure(0, weight=1)
+        for i in range(rows):
+            global_frame.rowconfigure(i, weight=1)
+        for i in range(rows):
+            hexacolor = hex(color)[2:]
+            while len(hexacolor) < 6:
+                hexacolor = "0{}".format(hexacolor)
+            _frame = ctk.CTkFrame(
+                global_frame, fg_color=f"#{str(hexacolor)}", bg_color=f"#{str(hexacolor)}", width=size)
+            color += c_inc
+            _frame.grid(row=i, column=0)
+
+    return global_frame

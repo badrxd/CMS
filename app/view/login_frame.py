@@ -10,12 +10,13 @@ class LoginFrame(ctk.CTkFrame):
         "corner_radius": 7,
         "width": 220,
         "height": 390,
-        "fg_color": GStyle.login_bg,
-        "bg_color": GStyle.bg
     }
 
     def __init__(self, master):
         self.__loginSyle["master"] = master
+        self.__loginSyle["fg_color"] = GStyle.login_bg
+        self.__loginSyle["bg_color"] = GStyle.bg
+
         """create login frame"""
         super().__init__(**self.__loginSyle)
         """place the frame"""

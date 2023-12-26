@@ -72,7 +72,7 @@ class DBStorage:
 
     def getById(self, cls, id):
         """return a model by id"""
-        data = self.__session.query(cls).filter(id == id).first()
+        data = self.__session.query(cls).filter(cls.id == id).first()
         return data
 
     # TODO(def getFirst(self, cls))
