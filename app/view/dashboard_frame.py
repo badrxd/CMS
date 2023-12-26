@@ -62,18 +62,22 @@ class DashboardFrame(ctk.CTkFrame):
 
         """delete the old widget"""
         if "current" in self.__frames:
-            getattr(self.__frames["Sidebar"],
-                    "{}_label".format(self.__frames["current\
-"].__class__.__name__.lower())).configure(fg_color=GStyle.sidebar_bg,
-                                          bg_color=GStyle.buttons_hover_color)
+            attr = "{}_label".format(self.__frames["current\
+"].__class__.__name__.lower())
+            if hasattr(self.__frames["Sidebar"], attr):
+                getattr(self.__frames["Sidebar"], attr
+                        ).configure(fg_color=GStyle.sidebar_bg,
+                                    bg_color=GStyle.sidebar_bg)
 
             self.__frames["current"].destroy()
         self.__frames["current"] = self.__frames[section]
 
         """show the new widget"""
         self.__frames[section].grid(column=1, row=1, sticky="news")
-
-        nav = getattr(self.__frames["Sidebar"],
-                      "{}_label".format(section.lower()))
-        nav.configure(fg_color=GStyle.buttons_hover_color,
-                      bg_color=GStyle.buttons_hover_color)
+        attr = "{}_label".format(section.lower())
+        if hasattr(self.__frames["Sidebar"], attr):
+            nav = getattr(self.__frames["Sidebar"], attr
+                          )
+            nav.configure(fg_color=GStyle.buttons_hover_color,
+                          bg_color=GStyle.sidebar_bg)
+        self.__frames["Header"].title.configure(text=section)

@@ -48,19 +48,19 @@ class Home(ctk.CTkFrame):
                  column=params["cpos"], sticky="news", padx=50)
 
         box.columnconfigure(0, weight=1)
-        box.columnconfigure(1, weight=1)
-        # box.rowconfigure(0, weight=1)
+        # box.columnconfigure(1, weight=1)
+        box.rowconfigure(0, weight=1)
         box.rowconfigure(1, weight=1)
         box.rowconfigure(2, weight=1)
 
-        # """create an image object"""
-        # image = ctk.CTkImage(light_image=Image.open(
-        #     f"/home/omarnem/omar/CMS/resources/icons/{params['title']}.png"), size=(200, 200))
+        """create an image object"""
+        image = ctk.CTkImage(light_image=Image.open(
+            f"resources/icons/sidebar/{params['title']}.png"), size=(200, 200))
 
-        # """add the image to a wiget"""
-        # name_label = ctk.CTkLabel(
-        #     box, text="", image=image)
-        # name_label.grid(row=0, column=0, padx=5)
+        """add the image to a wiget"""
+        name_label = ctk.CTkLabel(
+            box, text="", image=image)
+        name_label.grid(row=0, column=0, padx=5)
 
         title = ctk.CTkLabel(box, text=params["title"], font=(
             GStyle.frames_font_color, GStyle.large, "bold"), text_color=GStyle.font_color)
@@ -70,8 +70,8 @@ class Home(ctk.CTkFrame):
                 GStyle.frames_font_color, GStyle.small))
         value.grid(row=2, column=0)
 
-        b = gradient(box, color=GStyle.frames_border, columns=20, inc=1).grid(
-            column=1, row=1, rowspan=2, sticky="news")
+        # b = gradient(box, color=GStyle.frames_border, columns=20, inc=1).grid(
+        #     column=1, row=1, rowspan=2, sticky="news")
 
     def short_info(self, master):
         master.rowconfigure(0, weight=1)
@@ -88,7 +88,7 @@ class Home(ctk.CTkFrame):
         master.columnconfigure(8, weight=1)
 
         self.create_box(master, rpos=1, cpos=1,
-                        title="income", value="14000MAD")
+                        title="revenues", value="14000MAD")
         self.create_box(master, rpos=1, cpos=3,
                         title="customers", value="39")
         self.create_box(master, rpos=1, cpos=5,

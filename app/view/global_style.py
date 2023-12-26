@@ -2,7 +2,7 @@
 
 class Style:
     isDark = bool()
-    icon = "/home/omarnem/omar/CMS/resources/icons/light-mode.png"
+    icon = "resources/icons/light-mode.png"
     large = 20
     meduim = 16
     small = 12
@@ -15,13 +15,13 @@ class Style:
     bg = "#ecf0f1"
     login_bg = "#0091D5"
     header_bg = "#1C4E80"
-    sidebar_bg = "#0091D5"
+    sidebar_bg = "#ecf0f1"
     sidebar_font_color = "#ecf0f1"
-    frames_bg = "#ecf0f1"
+    frames_bg = "#ff3767"
     frames_font_color = "#0091D5"
     frames_border = "#0091D5"
     buttons_bg = "#1C4E80"
-    buttons_hover_color = "#7E909A"
+    buttons_hover_color = "#ff3767"
 
     # def __init__(self):
     #     self.make_it_dark()
@@ -29,7 +29,7 @@ class Style:
     def switch_mode(self):
         if not self.isDark:
             self.isDark = True
-            self.icon = "/home/omarnem/omar/CMS/resources/icons/dark-mode.png"
+            self.icon = "resources/icons/dark-mode.png"
             self.font_color = "#e2e3e6"
             self.head_font_color = "#e2e3e6"
             self.login_font_color = "#e2e3e6"
@@ -43,7 +43,7 @@ class Style:
             self.frames_font_color = "#e2e3e6"
             self.frames_border = "#1f263c"
             self.buttons_bg = "#161a2b"
-            self.buttons_hover_color = "#1f263c"
+            self.buttons_hover_color = "#ff3767"
         else:
             self.isDark = False
             self.icon = "/home/omarnem/omar/CMS/resources/icons/light-mode.png"

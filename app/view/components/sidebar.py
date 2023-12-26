@@ -3,6 +3,7 @@ from PIL import Image
 import tkinter
 import tkinter.messagebox
 from ..global_style import GStyle
+from PIL import Image
 
 
 class Sidebar(ctk.CTkFrame):
@@ -11,18 +12,20 @@ class Sidebar(ctk.CTkFrame):
         super().__init__(
             master,
             fg_color=GStyle.sidebar_bg,
-            bg_color=GStyle.sidebar_bg
+            bg_color=GStyle.sidebar_bg,
         )
         self.master = master
-        self.columnconfigure(0, weight=1)
-        self.rowconfigure(0, weight=5)
-        self.rowconfigure(1, weight=1)
-        self.rowconfigure(2, weight=1)
-        self.rowconfigure(3, weight=1)
-        self.rowconfigure(4, weight=1)
-        self.rowconfigure(5, weight=1)
-        self.rowconfigure(6, weight=1)
-        self.rowconfigure(7, weight=20)
+        # self.columnconfigure(0, weight=1)
+        # self.columnconfigure(1, weight=1)
+        # self.rowconfigure(0, weight=5)
+        # self.rowconfigure(1, weight=1)
+        # self.rowconfigure(2, weight=1)
+        # self.rowconfigure(3, weight=1)
+        # self.rowconfigure(4, weight=1)
+        # self.rowconfigure(5, weight=1)
+        # self.rowconfigure(6, weight=1)
+        # self.rowconfigure(7, weight=10)
+        # self.rowconfigure(8, weight=10)
 
         """create an image object"""
         # image = ctk.CTkImage(light_image=Image.open(
@@ -34,24 +37,33 @@ class Sidebar(ctk.CTkFrame):
         # name_label.grid(row=0, column=0)
 
         """home"""
+        icon = ctk.CTkImage(light_image=Image.open(
+            "resources/icons/sidebar/home.png"), size=(30, 30))
         self.home_label = ctk.CTkButton(self,
-                                        text="home",
-                                        anchor="w",
+                                        text="",
+                                        image=icon,
+                                        width=10,
+                                        anchor="center",
                                         font=(GStyle.font_family,
                                               GStyle.meduim),
                                         text_color=GStyle.sidebar_font_color,
                                         bg_color=GStyle.sidebar_bg,
                                         fg_color=GStyle.sidebar_bg,
                                         hover_color=GStyle.header_bg,
-                                        corner_radius=0,
+                                        corner_radius=6,
                                         command=self.home_section
                                         )
-        # home_label.pack(pady=20, padx=0)
-        self.home_label.grid(row=1, column=0, sticky="new")
+
+        # self.home_label.grid(row=1, column=0, sticky="new")
+        self.home_label.pack(pady=5)
 
         """cars"""
+        icon = ctk.CTkImage(light_image=Image.open(
+            "resources/icons/sidebar/cars.png"), size=(30, 30))
         self.carssection_label = ctk.CTkButton(self,
-                                               text="cars",
+                                               text="",
+                                               image=icon,
+                                               width=10,
                                                anchor="w",
                                                font=(GStyle.font_family,
                                                      GStyle.meduim),
@@ -59,14 +71,19 @@ class Sidebar(ctk.CTkFrame):
                                                bg_color=GStyle.sidebar_bg,
                                                fg_color=GStyle.sidebar_bg,
                                                hover_color=GStyle.header_bg,
-                                               corner_radius=0,
+                                               corner_radius=6,
                                                command=self.cars_section)
-        # cars_label.pack(pady=20, padx=0)
-        self.carssection_label.grid(row=2, column=0, sticky="new")
+
+        # self.carssection_label.grid(row=2, column=0, sticky="new")
+        self.carssection_label.pack(pady=5)
 
         """reservations"""
+        icon = ctk.CTkImage(light_image=Image.open(
+            "resources/icons/sidebar/reservations.png"), size=(30, 30))
         self.reservationssection_label = ctk.CTkButton(self,
-                                                       text="reservations",
+                                                       image=icon,
+                                                       text="",
+                                                       width=10,
                                                        anchor="w",
                                                        font=(GStyle.font_family,
                                                              GStyle.meduim),
@@ -74,63 +91,97 @@ class Sidebar(ctk.CTkFrame):
                                                        bg_color=GStyle.sidebar_bg,
                                                        fg_color=GStyle.sidebar_bg,
                                                        hover_color=GStyle.header_bg,
-                                                       corner_radius=0,
+                                                       corner_radius=6,
                                                        command=self.reservations_section)
-        # res_label.pack(pady=20, padx=0)
-        self.reservationssection_label.grid(row=3, column=0, sticky="new")
+
+        # self.reservationssection_label.grid(row=3, column=0, sticky="new")
+        self.reservationssection_label.pack(pady=5)
 
         """revenue"""
+        icon = ctk.CTkImage(light_image=Image.open(
+            "resources/icons/sidebar/revenues.png"), size=(30, 30))
         self.revenuessection_label = ctk.CTkButton(self,
-                                                   text="revenue",
+                                                   image=icon,
+                                                   text="",
                                                    anchor="w",
+                                                   width=10,
                                                    font=(GStyle.font_family,
                                                          GStyle.meduim),
                                                    text_color=GStyle.sidebar_font_color,
                                                    bg_color=GStyle.sidebar_bg,
                                                    fg_color=GStyle.sidebar_bg,
                                                    hover_color=GStyle.header_bg,
-                                                   corner_radius=0,
+                                                   corner_radius=6,
                                                    command=self.revenues_section)
-        # revenue_label.pack(pady=20, padx=0)
-        self.revenuessection_label.grid(row=4, column=0, sticky="new")
+
+        # self.revenuessection_label.grid(row=4, column=0, sticky="new")
+        self.revenuessection_label.pack(pady=5)
 
         """customers"""
+        icon = ctk.CTkImage(light_image=Image.open(
+            "resources/icons/sidebar/customers.png"), size=(30, 30))
         self.customerssection_label = ctk.CTkButton(self,
-                                                    text="customers",
+                                                    image=icon,
+                                                    text="",
                                                     anchor="w",
+                                                    width=10,
                                                     font=(GStyle.font_family,
                                                           GStyle.meduim),
                                                     text_color=GStyle.sidebar_font_color,
                                                     bg_color=GStyle.sidebar_bg,
                                                     fg_color=GStyle.sidebar_bg,
                                                     hover_color=GStyle.header_bg,
-                                                    corner_radius=0,
+                                                    corner_radius=6,
                                                     command=self.customers_section)
-        # customers_label.pack(pady=20, padx=0)
-        self.customerssection_label.grid(row=5, column=0, sticky="new")
+
+        # self.customerssection_label.grid(row=5, column=0, sticky="new")
+        self.customerssection_label.pack(pady=5)
 
         """users"""
+        icon = ctk.CTkImage(light_image=Image.open(
+            "resources/icons/sidebar/users.png"), size=(30, 30))
         self.userssection_label = ctk.CTkButton(self,
-                                                text="users",
+                                                image=icon,
+                                                text="",
                                                 anchor="w",
+                                                width=10,
                                                 font=(GStyle.font_family,
                                                       GStyle.meduim),
                                                 text_color=GStyle.sidebar_font_color,
                                                 bg_color=GStyle.sidebar_bg,
                                                 fg_color=GStyle.sidebar_bg,
                                                 hover_color=GStyle.header_bg,
-                                                corner_radius=0,
+                                                corner_radius=6,
                                                 command=self.users_section)
-        # users_label.pack(pady=10, padx=0)
-        self.userssection_label.grid(row=6, column=0, sticky="new")
 
-        logout_button = ctk.CTkButton(self,
-                                      text="Logout",
-                                      width=50,
-                                      fg_color=GStyle.buttons_bg,
-                                      hover_color=GStyle.buttons_hover_color,
-                                      command=master.on_logout)
-        logout_button.place(relx=0.5, rely=0.95, anchor="s")
+        # self.userssection_label.grid(row=6, column=0, sticky="new")
+        self.userssection_label.pack(pady=5)
+
+        """logout button"""
+        icon = ctk.CTkImage(light_image=Image.open(
+            "resources/icons/sidebar/logout.png"), size=(30, 30))
+        self.userssection_label = ctk.CTkButton(self,
+                                                image=icon,
+                                                text="",
+                                                anchor="w",
+                                                width=10,
+                                                font=(GStyle.font_family,
+                                                      GStyle.meduim),
+                                                text_color=GStyle.sidebar_font_color,
+                                                bg_color=GStyle.sidebar_bg,
+                                                fg_color=GStyle.sidebar_bg,
+                                                hover_color=GStyle.header_bg,
+                                                corner_radius=6,
+                                                command=master.on_logout)
+
+        # self.userssection_label.grid(row=6, column=0, sticky="new")
+        self.userssection_label.pack(pady=5)
+
+        """create a border right"""
+        # ctk.CTkFrame(self, width=1, border_color=GStyle.login_bg, border_width=1,
+        #              fg_color=GStyle.login_bg,
+        #              bg_color=GStyle.login_bg).grid(
+        #     row=0, column=1, rowspan=9, sticky="news")
 
     def home_section(self):
         self.master.create_main("Home")
