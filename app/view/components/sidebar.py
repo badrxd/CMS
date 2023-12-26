@@ -49,7 +49,7 @@ class Sidebar(ctk.CTkFrame):
                                         text_color=GStyle.sidebar_font_color,
                                         bg_color=GStyle.sidebar_bg,
                                         fg_color=GStyle.sidebar_bg,
-                                        hover_color=GStyle.header_bg,
+                                        hover_color=GStyle.buttons_hover_color,
                                         corner_radius=6,
                                         command=self.home_section
                                         )
@@ -70,7 +70,7 @@ class Sidebar(ctk.CTkFrame):
                                                text_color=GStyle.sidebar_font_color,
                                                bg_color=GStyle.sidebar_bg,
                                                fg_color=GStyle.sidebar_bg,
-                                               hover_color=GStyle.header_bg,
+                                               hover_color=GStyle.buttons_hover_color,
                                                corner_radius=6,
                                                command=self.cars_section)
 
@@ -90,7 +90,7 @@ class Sidebar(ctk.CTkFrame):
                                                        text_color=GStyle.sidebar_font_color,
                                                        bg_color=GStyle.sidebar_bg,
                                                        fg_color=GStyle.sidebar_bg,
-                                                       hover_color=GStyle.header_bg,
+                                                       hover_color=GStyle.buttons_hover_color,
                                                        corner_radius=6,
                                                        command=self.reservations_section)
 
@@ -110,7 +110,7 @@ class Sidebar(ctk.CTkFrame):
                                                    text_color=GStyle.sidebar_font_color,
                                                    bg_color=GStyle.sidebar_bg,
                                                    fg_color=GStyle.sidebar_bg,
-                                                   hover_color=GStyle.header_bg,
+                                                   hover_color=GStyle.buttons_hover_color,
                                                    corner_radius=6,
                                                    command=self.revenues_section)
 
@@ -130,7 +130,7 @@ class Sidebar(ctk.CTkFrame):
                                                     text_color=GStyle.sidebar_font_color,
                                                     bg_color=GStyle.sidebar_bg,
                                                     fg_color=GStyle.sidebar_bg,
-                                                    hover_color=GStyle.header_bg,
+                                                    hover_color=GStyle.buttons_hover_color,
                                                     corner_radius=6,
                                                     command=self.customers_section)
 
@@ -150,7 +150,7 @@ class Sidebar(ctk.CTkFrame):
                                                 text_color=GStyle.sidebar_font_color,
                                                 bg_color=GStyle.sidebar_bg,
                                                 fg_color=GStyle.sidebar_bg,
-                                                hover_color=GStyle.header_bg,
+                                                hover_color=GStyle.buttons_hover_color,
                                                 corner_radius=6,
                                                 command=self.users_section)
 
@@ -160,22 +160,22 @@ class Sidebar(ctk.CTkFrame):
         """logout button"""
         icon = ctk.CTkImage(light_image=Image.open(
             "resources/icons/sidebar/logout.png"), size=(30, 30))
-        self.userssection_label = ctk.CTkButton(self,
-                                                image=icon,
-                                                text="",
-                                                anchor="w",
-                                                width=10,
-                                                font=(GStyle.font_family,
-                                                      GStyle.meduim),
-                                                text_color=GStyle.sidebar_font_color,
-                                                bg_color=GStyle.sidebar_bg,
-                                                fg_color=GStyle.sidebar_bg,
-                                                hover_color=GStyle.header_bg,
-                                                corner_radius=6,
-                                                command=master.on_logout)
+        self.logout_label = ctk.CTkButton(self,
+                                          image=icon,
+                                          text="",
+                                          anchor="w",
+                                          width=10,
+                                          font=(GStyle.font_family,
+                                                GStyle.meduim),
+                                          text_color=GStyle.sidebar_font_color,
+                                          bg_color=GStyle.sidebar_bg,
+                                          fg_color=GStyle.sidebar_bg,
+                                          hover_color=GStyle.buttons_hover_color,
+                                          corner_radius=6,
+                                          command=master.on_logout)
 
         # self.userssection_label.grid(row=6, column=0, sticky="new")
-        self.userssection_label.pack(pady=5)
+        self.logout_label.pack(pady=5)
 
         """create a border right"""
         # ctk.CTkFrame(self, width=1, border_color=GStyle.login_bg, border_width=1,
