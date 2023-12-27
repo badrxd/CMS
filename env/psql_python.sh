@@ -3,3 +3,4 @@
 pip install --upgrade setuptools
 pip install --upgrade pyparsing
 pip install psycopg2-binary
+pip install Pillow

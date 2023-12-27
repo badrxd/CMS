@@ -26,7 +26,7 @@ class Header(ctk.CTkFrame):
                                   text="",
                                   width=50,
                                   font=(GStyle.font_family,
-                                        GStyle.large, "bold"),
+                                        GStyle.large),
                                   text_color=GStyle.head_font_color,
                                   fg_color=GStyle.header_bg,
                                   bg_color=GStyle.header_bg

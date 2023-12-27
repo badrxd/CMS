@@ -139,7 +139,7 @@ class App(ctk.CTk):
 
         """create an image object"""
         image = ctk.CTkImage(light_image=Image.open(
-            "/home/omarnem/omar/CMS/resources/icons/{}.png".format(s)))
+            "resources/icons/{}.png".format(s)))
 
         """add the image to a wiget"""
         image_label = ctk.CTkLabel(main, text="", image=image)

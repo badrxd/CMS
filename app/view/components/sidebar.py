@@ -178,10 +178,9 @@ class Sidebar(ctk.CTkFrame):
         self.logout_label.pack(pady=5)
 
         """create a border right"""
-        # ctk.CTkFrame(self, width=1, border_color=GStyle.login_bg, border_width=1,
-        #              fg_color=GStyle.login_bg,
-        #              bg_color=GStyle.login_bg).grid(
-        #     row=0, column=1, rowspan=9, sticky="news")
+        ctk.CTkFrame(self, height=1000, width=1, border_color=GStyle.frames_border, border_width=1,
+                     fg_color=GStyle.frames_border,
+                     bg_color=GStyle.frames_border).place(relx=1, rely=0.5, anchor="e")
 
     def home_section(self):
         self.master.create_main("Home")
