@@ -47,6 +47,16 @@ class ProCTkTable:
             font style size family...
         lb_pady: (tuple)
             padding y text (padding-top, padding-bottom)
+        table_background: (str)
+            table background color
+        title_fg_color: (str)
+            title foreground color
+        title_bg_color: (str)
+            title background color
+        title_padx: (tuple)
+            title padding x
+        title_pady: (tuple)
+            title padding y
     """
     data = []
     other = {}
@@ -69,16 +79,24 @@ class ProCTkTable:
         box.grid(row=rpos, column=cpos, padx=padx, pady=pady, sticky="news")
 
         box.columnconfigure(0, weight=1)
-        box.rowconfigure(0, weight=10)
+        if title != "":
+            box.rowconfigure(0, weight=10)
+            title = ctk.CTkLabel(
+                box, text=title, anchor="sw",
+                text_color=other["title_color"] if "title_color" in other else "black",
+                font=other["title_font"] if "title_font" in other else (
+                    "", 16, "bold"),
+                fg_color=other["title_fg_color"] if "title_fg_color" in other else transparent,
+                bg_color=other["title_bg_color"] if "title_bg_color" in other else transparent)
+            title.grid(row=0, column=0,
+                       padx=other["title_padx"] if "title_padx" in other else 20,
+                       pady=other["title_pady"] if "title_pady" in other else 0,
+                       sticky="news")
         box.rowconfigure(1, weight=10)
-        title = ctk.CTkLabel(
-            box, text=title, anchor="sw",
-            text_color=other["title_color"] if "title_color" in other else "black",
-            font=other["title_font"] if "title_font" in other else ("", 16, "bold"))
-        title.grid(row=0, column=0, padx=20, sticky="news")
 
         self.create_rows(box, rpos=1, cpos=0,
-                         data=self.data, transparent=transparent)
+                         data=self.data,
+                         transparent=other["table_background"] if "table_background" in other else transparent)
 
     def create_rows(self, master, **params):
         table = ctk.CTkFrame(
@@ -113,14 +131,18 @@ class ProCTkTable:
             r.rowconfigure(0, weight=1)
             if "border_row" in self.other and self.other["border_row"]:
                 r.rowconfigure(1, weight=1)
-                ctk.CTkFrame(r, corner_radius=0, border_color=self.other['global_border'][0] if 'global_border' in self.other else 'black',
-                             fg_color=self.other['global_border'][0] if 'global_border' in self.other else 'transparent', border_width=1, height=self.other['global_border'][1] if 'global_border' in self.other else 1).grid(
-                    row=1, columnspan=column_num, sticky="ews")
+                ctk.CTkFrame(r,
+                             corner_radius=0,
+                             border_color=self.other['global_border'][0] if 'global_border' in self.other else 'black',
+                             fg_color=self.other['global_border'][0] if 'global_border' in self.other else 'transparent',
+                             border_width=1, height=self.other['global_border'][1] if 'global_border' in self.other else 1
+                             ).grid(row=1, columnspan=column_num, sticky="ews")
             for j in range(column_num):
                 text_color = self.other["text_color"] if "text_color" in self.other else "black"
+                font = self.other['font'] if "font" in self.other else None
                 if i == 0:
                     text_color = self.other["head_text_color"] if "head_text_color" in self.other else "black"
-                    font = self.other['title_font'] if "title_font" in self.other else self.other['font'] if "font" in self.other else None
+                    font = self.other['head_font'] if "head_font" in self.other else self.other['font'] if "font" in self.other else None
                 l = ctk.CTkLabel(
                     r, text=params["data"][i][j], width=200,
                     font=font,
