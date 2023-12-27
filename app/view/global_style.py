@@ -3,9 +3,11 @@
 class Style:
     isDark = bool()
     icon = "resources/icons/light-mode.png"
-    large = 20
+    xl = 31
+    large = 26
     meduim = 16
-    small = 12
+    small = 13
+    xs = 10
     font_family = "Nunito Sans"
     font_color = "#1C4E80"
     # head_font_color = "#ecf0f1"
