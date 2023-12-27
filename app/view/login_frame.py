@@ -67,9 +67,9 @@ class LoginFrame(ctk.CTkFrame):
             """check if the user exists"""
             if req['status']:
                 """start login"""
+                self.master.show_dashboard(req['userInfo'])
                 self.master.notification(
                     req['message'], "Success", GStyle.bg)
-                self.master.show_dashboard(req['userInfo'])
             else:
                 """display error notification"""
                 self.master.notification(
