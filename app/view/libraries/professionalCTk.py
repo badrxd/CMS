@@ -45,6 +45,8 @@ class ProCTkTable:
             text color
         text_font: (tuple)
             font style size family...
+        lb_pady: (tuple)
+            padding y text (padding-top, padding-bottom)
     """
     data = []
     other = {}
@@ -111,29 +113,29 @@ class ProCTkTable:
             r.rowconfigure(0, weight=1)
             if "border_row" in self.other and self.other["border_row"]:
                 r.rowconfigure(1, weight=1)
-                ctk.CTkFrame(r, corner_radius=0, border_color="black",
-                             bg_color=params["transparent"], border_width=1, height=1).grid(
+                ctk.CTkFrame(r, corner_radius=0, border_color=self.other['global_border'][0] if 'global_border' in self.other else 'black',
+                             fg_color=self.other['global_border'][0] if 'global_border' in self.other else 'transparent', border_width=1, height=self.other['global_border'][1] if 'global_border' in self.other else 1).grid(
                     row=1, columnspan=column_num, sticky="ews")
             for j in range(column_num):
                 text_color = self.other["text_color"] if "text_color" in self.other else "black"
                 if i == 0:
                     text_color = self.other["head_text_color"] if "head_text_color" in self.other else "black"
+                    font = self.other['title_font'] if "title_font" in self.other else self.other['font'] if "font" in self.other else None
                 l = ctk.CTkLabel(
-                    r, text=params["data"][i][j], width=100,
-                    font=self.other["font"] if "font" in self.other else (
-                        "", 14),
+                    r, text=params["data"][i][j], width=200,
+                    font=font,
                     text_color=text_color,
-                    wraplength=100,
+                    wraplength=200,
                     anchor=self.other["text_anchor"] if "text_anchor" in self.other else "w")
-                l.grid(row=0, column=j, padx=20,
-                       sticky=self.other["text_sticky"] if "text_sticky" in self.other else "ew")
+                l.grid(row=0, column=j, padx=20, pady=self.other['lb_pady'] if "lb_pady" in self.other else 0,
+                       sticky=self.other["text_sticky"] if "text_sticky" in self.other else "w")
 
     def json_to_table(self, json_data):
         # TODO: call fuction that get the tables data
         table = []
         row = []
         for header in json_data[0]:
-            row.append(header)
+            row.append(header.upper())
         table.append(row)
         for column in json_data:
             table.append(list(column.values()))
@@ -148,21 +150,21 @@ class ProCTkScrollableFrame(ctk.CTkScrollableFrame):
                  master: any,
                  width: int = 200,
                  height: int = 200,
-                 corner_radius: int | str | None = None,
-                 border_width: int | str | None = None,
-                 bg_color: str | Tuple[str, str] = "transparent",
-                 fg_color: str | Tuple[str, str] | None = None,
-                 border_color: str | Tuple[str, str] | None = None,
-                 scrollbar_fg_color: str | Tuple[str, str] | None = None,
+                 corner_radius: int or str or None = None,
+                 border_width: int or str or None = None,
+                 bg_color: str or Tuple[str, str] = "transparent",
+                 fg_color: str or Tuple[str, str] or None = None,
+                 border_color: str or Tuple[str, str] or None = None,
+                 scrollbar_fg_color: str or Tuple[str, str] or None = None,
                  scrollbar_size: int = 10,
                  scrollbar_hover_size: int = 10,
-                 scrollbar_button_color: str | Tuple[str, str] | None = None,
-                 scrollbar_button_hover_color: str | Tuple[str,
-                                                           str] | None = None,
-                 label_fg_color: str | Tuple[str, str] | None = None,
-                 label_text_color: str | Tuple[str, str] | None = None,
+                 scrollbar_button_color: str or Tuple[str, str] or None = None,
+                 scrollbar_button_hover_color: str or Tuple[str,
+                                                            str] or None = None,
+                 label_fg_color: str or Tuple[str, str] or None = None,
+                 label_text_color: str or Tuple[str, str] or None = None,
                  label_text: str = "",
-                 label_font: tuple | CTkFont | None = None,
+                 label_font: tuple or CTkFont or None = None,
                  label_anchor: str = "center",
                  orientation: Literal['vertical',
                                       'horizontal'] = "vertical"):

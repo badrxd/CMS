@@ -144,9 +144,12 @@ class Home(ctk.CTkFrame):
             head_fg_color=GStyle.header_bg,
             head_bg_color=GStyle.header_bg,
             head_text_color=GStyle.head_font_color,
-            transparent=GStyle.bg,
+            transparent=GStyle.frames_bg,
             border_row=True,
-            data=json_data
+            data=json_data,
+            global_border=[GStyle.login_bg, 1],
+            lb_pady=6,
+            title_font=(GStyle.font_family, GStyle.small, 'bold')
         )
         ProCTkTable(
             master,
@@ -159,6 +162,9 @@ class Home(ctk.CTkFrame):
             head_bg_color=GStyle.header_bg,
             head_text_color=GStyle.head_font_color,
             border_row=True,
-            title="Last Reservations", transparent=GStyle.bg,
-            data=json_data
+            title="Last Reservations",
+            transparent=GStyle.frames_bg,
+            data=json_data,
+            global_border=[GStyle.login_bg, 1],
+            lb_pady=6
         )
