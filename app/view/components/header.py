@@ -44,10 +44,10 @@ class Header(ctk.CTkFrame):
 
         username_label = ctk.CTkLabel(
             self, text=f"{master.userInfo['fullName']}", font=(GStyle.font_family, GStyle.meduim), text_color=GStyle.head_font_color)
-        username_label.grid(column=3, row=0, sticky="en")
+        username_label.grid(column=3, row=0, padx=(0, 20), sticky="en")
         username_label = ctk.CTkLabel(
             self, text=f"{master.userInfo['role']}", font=(GStyle.font_family, GStyle.small), text_color=GStyle.head_font_color)
-        username_label.grid(column=3, row=1, sticky="en")
+        username_label.grid(column=3, row=1, padx=(0, 20), sticky="en")
 
     def _change_mode(self):
         GStyle.switch_mode()

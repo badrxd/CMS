@@ -56,7 +56,10 @@ class DashboardFrame(ctk.CTkFrame):
         self.__frames["Header"] = Header(self)
         self.__frames["Header"].grid(column=1, row=0, sticky="news")
 
-    def create_main(self, section="Home"):
+    def create_main(self, section=""):
+        """this will make switch mode more dynamic"""
+        if section == "":
+            section = self.__frames["current"].__class__.__name__ if "current" in self.__frames else "Home"
         """create main widgets"""
         self.__frames[section] = Sections[section](self)
 

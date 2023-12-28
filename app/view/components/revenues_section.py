@@ -13,3 +13,9 @@ class RevenuesSection(ctk.CTkFrame):
             fg_color=GStyle.bg,
             bg_color=GStyle.bg
         )
+
+        # def on_key_press(event):
+        #     print("you pressed {}".format(event.key))
+        #     key_press_handler(event, canvas, toolbar)
+
+        # canvas.mpl_connect("key_press_event", on_key_press)
