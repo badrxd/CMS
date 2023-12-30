@@ -67,7 +67,7 @@ class Home(ctk.CTkFrame):
         title.grid(row=1, column=0, padx=20)
         value = ctk.CTkLabel(
             box, text=params["value"], text_color=GStyle.font_color, font=(
-                GStyle.frames_font_color, GStyle.small))
+                GStyle.frames_font_color, GStyle.meduim))
         value.grid(row=2, column=0)
 
         # b = gradient(box, color=GStyle.frames_border, columns=20, inc=1).grid(

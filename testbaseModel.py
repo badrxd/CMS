@@ -22,33 +22,116 @@ def getTopCustomers():
     return TopCustomers
 
 
-getTopCustomers()
+# getTopCustomers()
 #############################################################################################
-# from models import storage
 
 # user = User(userName="omar",
 #             password="omarnem",
 #             fullName="omar idhmaid",
-#             role="adman",
-#             secretKey="lhaj")
+#             role="admin",
+#             secretKey="lhaj",
+#             gender="male")
 # user.save()
 
-# customer = Customer(full_name="badr eddine ouydi",
-#                     phone="0606060606",
-#                     card_id="ia262626",
-#                     driver_id="262626",
-#                     card_id_image="null",
-#                     driver_id_image="null",
-#                     )
-# customer.save()
 
-# car = Car(brand="Mitsubishi",
-#           image="null",
-#           matricule="76-a-236584",
-#           rent_price="200",
-#           currency="MAD",
-#           )
-# car.save()
+# cus = [
+#     {
+#         "full_name": "fadl bouyal",
+#         "phone": "0606064356",
+#         "card_id": "ig2624356",
+#         "driver_id": "24352626",
+#         "card_id_image": "null",
+#         "driver_id_image": "null"
+#     },
+#     {
+#         "full_name": "salm iddin",
+#         "phone": "063757329",
+#         "card_id": "i5323567",
+#         "driver_id": "34536426",
+#         "card_id_image": "null",
+#         "driver_id_image": "null"
+#     },
+#     {
+#         "full_name": "mina zikkan",
+#         "phone": "0656463469",
+#         "card_id": "GB634556",
+#         "driver_id": "JJ232568",
+#         "card_id_image": "null",
+#         "driver_id_image": "null"
+#     },
+#     {
+#         "full_name": "ahmed zikk",
+#         "phone": "0606060606",
+#         "card_id": "ia262626",
+#         "driver_id": "262626",
+#         "card_id_image": "null",
+#         "driver_id_image": "null"
+#     },
+#     {
+#         "full_name": "salm bkacd",
+#         "phone": "06062345225",
+#         "card_id": "GF235345",
+#         "driver_id": "573234",
+#         "card_id_image": "null",
+#         "driver_id_image": "null"
+#     },
+#     {
+#         "full_name": "laila aakouch",
+#         "phone": "0783579265",
+#         "card_id": "JH345256",
+#         "driver_id": "26435345232",
+#         "card_id_image": "null",
+#         "driver_id_image": "null"
+#     },
+#     {
+#         "full_name": "soukalim mounib",
+#         "phone": "0734657623",
+#         "card_id": "IL346463",
+#         "driver_id": "24633736",
+#         "card_id_image": "null",
+#         "driver_id_image": "null"
+#     }
+# ]
+
+# for one in cus:
+#     customer = Customer(**one)
+#     customer.save()
+
+cars = [
+    {
+        "brand": "Mitsubishi",
+        "car_image": "null",
+        "matricule": "76-a-236584",
+        "rent_price": 200,
+        "currency": "MAD"
+    },
+    {
+        "brand": "dacia",
+        "car_image": "null",
+        "matricule": "75-t-436584",
+        "rent_price": 150,
+        "currency": "MAD"
+    },
+    {
+        "brand": "bmw",
+        "car_image": "null",
+        "matricule": "15-l-36584",
+        "rent_price": 350,
+        "currency": "MAD"
+    },
+    {
+        "brand": "bmw",
+        "car_image": "null",
+        "matricule": "51-f-456594",
+        "rent_price": 400,
+        "currency": "MAD"
+    }
+]
+
+for one in cars:
+    car = Car(**one)
+    car.save()
+
 
 #############################################################################################
 
