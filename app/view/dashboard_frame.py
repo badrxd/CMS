@@ -23,7 +23,7 @@ Sections = {
 
 
 class DashboardFrame(ctk.CTkFrame):
-    __frames = {}
+    frames = {}
 
     def __init__(self, master, userInfo):
         super().__init__(master)
@@ -47,41 +47,41 @@ class DashboardFrame(ctk.CTkFrame):
 
     def create_sidebar(self):
         """create sidebar wigets"""
-        self.__frames["Sidebar"] = Sidebar(self)
-        self.__frames["Sidebar"].grid(
+        self.frames["Sidebar"] = Sidebar(self)
+        self.frames["Sidebar"].grid(
             column=0, row=0, rowspan=2, sticky="news")
 
     def create_header(self):
         """create header wigets"""
-        self.__frames["Header"] = Header(self)
-        self.__frames["Header"].grid(column=1, row=0, sticky="news")
+        self.frames["Header"] = Header(self)
+        self.frames["Header"].grid(column=1, row=0, sticky="news")
 
     def create_main(self, section=""):
         """this will make switch mode more dynamic"""
         if section == "":
-            section = self.__frames["current"].__class__.__name__ if "current" in self.__frames else "Home"
+            section = self.frames["current"].__class__.__name__ if "current" in self.frames else "Home"
         """create main widgets"""
-        self.__frames[section] = Sections[section](self)
+        self.frames[section] = Sections[section](self)
 
         """delete the old widget"""
-        if "current" in self.__frames:
-            attr = "{}_label".format(self.__frames["current\
+        if "current" in self.frames:
+            attr = "{}_label".format(self.frames["current\
 "].__class__.__name__.lower())
-            if hasattr(self.__frames["Sidebar"], attr):
-                getattr(self.__frames["Sidebar"], attr
+            if hasattr(self.frames["Sidebar"], attr):
+                getattr(self.frames["Sidebar"], attr
                         ).configure(fg_color=GStyle.sidebar_bg,
                                     bg_color=GStyle.sidebar_bg)
 
-            self.__frames["current"].destroy()
-            del self.__frames["current"]
-        self.__frames["current"] = self.__frames[section]
+            self.frames["current"].destroy()
+            del self.frames["current"]
+        self.frames["current"] = self.frames[section]
 
         """show the new widget"""
-        self.__frames[section].grid(column=1, row=1, sticky="news")
+        self.frames[section].grid(column=1, row=1, sticky="news")
         attr = "{}_label".format(section.lower())
-        if hasattr(self.__frames["Sidebar"], attr):
-            nav = getattr(self.__frames["Sidebar"], attr
+        if hasattr(self.frames["Sidebar"], attr):
+            nav = getattr(self.frames["Sidebar"], attr
                           )
             nav.configure(fg_color=GStyle.buttons_hover_color,
                           bg_color=GStyle.sidebar_bg)
-        self.__frames["Header"].title.configure(text=section)
+        self.frames["Header"].title.configure(text=section)
