@@ -73,6 +73,7 @@ class DashboardFrame(ctk.CTkFrame):
                                     bg_color=GStyle.sidebar_bg)
 
             self.__frames["current"].destroy()
+            del self.__frames["current"]
         self.__frames["current"] = self.__frames[section]
 
         """show the new widget"""
