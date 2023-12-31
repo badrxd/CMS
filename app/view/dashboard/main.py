@@ -51,6 +51,7 @@ class Main:
 
         """show the new widget"""
         self.frames[section].grid(column=1, row=1, sticky="news")
+        self.loading()
         attr = "{}_label".format(section.lower())
         if hasattr(self.master.frames["Sidebar"], attr):
             nav = getattr(self.master.frames["Sidebar"], attr
@@ -58,3 +59,14 @@ class Main:
             nav.configure(fg_color=GStyle.buttons_hover_color,
                           bg_color=GStyle.sidebar_bg)
         self.master.frames["Header"].title.configure(text=section)
+
+    def loading(self):
+        lt = ctk.CTkFrame(
+            self.master.frames["Header"], fg_color=GStyle.header_bg, bg_color=GStyle.header_bg, height=50, width=300)
+        lt.grid(row=0, column=0, rowspan=2)
+        self.master.after(2000, lt.destroy)
+        l = ctk.CTkFrame(self.master, fg_color=GStyle.bg, bg_color=GStyle.bg)
+        l.grid(column=1, row=1, sticky="news")
+        label = ctk.CTkLabel(l, text="LOADING...", font=(GStyle.font_family, GStyle.xl, "bold"),
+                             text_color=GStyle.frames_font_color, bg_color=GStyle.bg, fg_color=GStyle.bg).pack(pady=100)
+        self.master.after(2000, l.destroy)
