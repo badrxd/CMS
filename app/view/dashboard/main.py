@@ -1,5 +1,5 @@
 import customtkinter as ctk
-import tkinter
+from tkinter import PhotoImage, Label
 import tkinter.messagebox
 from ..global_style import GStyle
 from app.core.Data_Handler.GetHomeData import getStatistic
@@ -69,8 +69,21 @@ class Main:
         self.master.after(2000, lt.destroy)
         l = ctk.CTkFrame(self.master, fg_color=GStyle.bg, bg_color=GStyle.bg)
         l.grid(column=1, row=1, sticky="news")
-        icon = ctk.CTkImage(light_image=Image.open(
-            "resources/icons/loading.png"), size=(200, 200))
-        label = ctk.CTkLabel(l, text="", image=icon, font=(GStyle.font_family, GStyle.xl, "bold"),
-                             text_color=GStyle.frames_font_color, bg_color=GStyle.bg, fg_color=GStyle.bg).pack(pady=100)
+        self.l = l
+        self.gifframeCnt = 20
+        self.gifframes = [PhotoImage(file='resources/gifs/darkload.gif' if GStyle.isDark else 'resources/gifs/load.gif',
+                                     format='gif -index %i' % (i))
+                          for i in range(self.gifframeCnt)]
+        self.giflabel = Label(l, text="", bg=GStyle.bg)
+        self.giflabel.pack()
+        self.l.after(0, self.animate, 0)
         self.master.after(2000, l.destroy)
+
+    def animate(self, ind):
+
+        frame = self.gifframes[ind]
+        ind += 1
+        if ind == self.gifframeCnt:
+            ind = 0
+        self.giflabel.configure(image=frame)
+        self.l.after(100, self.animate, ind)
