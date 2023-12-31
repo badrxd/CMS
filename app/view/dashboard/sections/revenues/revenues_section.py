@@ -1,8 +1,8 @@
 import customtkinter as ctk
 import tkinter
 import tkinter.messagebox
-from ..global_style import GStyle
-from ..libraries.professionalCTk import ProCTkTable, ProCTkScrollableFrame
+from ....global_style import GStyle
+from ....libraries.professionalCTk import ProCTkTable, ProCTkScrollableFrame
 from PIL import Image
 
 

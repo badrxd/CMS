@@ -171,23 +171,23 @@ class Sidebar(ctk.CTkFrame):
                      bg_color=GStyle.frames_border).place(relx=1, rely=0.5, anchor="e")
 
     def home_section(self):
-        self.master.create_main("Home")
+        self.master.main.create_main("Home")
 
     def users_section(self):
-        self.master.create_main("UsersSection")
+        self.master.main.create_main("UsersSection")
 
     def customers_section(self):
-        self.master.create_main("CustomersSection")
+        self.master.main.create_main("CustomersSection")
 
     def cars_section(self):
-        self.master.create_main("CarsSection")
+        self.master.main.create_main("CarsSection")
 
     def revenues_section(self):
-        self.master.create_main("RevenuesSection")
+        self.master.main.create_main("RevenuesSection")
 
     def reservations_section(self):
-        self.master.create_main("ReservationsSection")
+        self.master.main.create_main("ReservationsSection")
 
     def log_out(self):
-        del self.master.frames["current"]
+        del self.master.main.frames["current"]
         self.master.on_logout()

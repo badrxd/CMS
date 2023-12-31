@@ -1,8 +1,8 @@
 import customtkinter as ctk
 import tkinter
 import tkinter.messagebox
-from ..global_style import GStyle
-from ..libraries.professionalCTk import ProCTkTable, ProCTkScrollableFrame, gradient
+from ....global_style import GStyle
+from ....libraries.professionalCTk import ProCTkTable, ProCTkScrollableFrame, gradient
 from PIL import Image
 
 
@@ -70,22 +70,12 @@ class Home(ctk.CTkFrame):
                 GStyle.frames_font_color, GStyle.meduim))
         value.grid(row=2, column=0)
 
-        # b = gradient(box, color=GStyle.frames_border, columns=20, inc=1).grid(
-        #     column=1, row=1, rowspan=2, sticky="news")
-
     def short_info(self, master):
         master.rowconfigure(0, weight=1)
         master.rowconfigure(1, weight=2)
         master.rowconfigure(2, weight=1)
-        master.columnconfigure(0, weight=1)
-        master.columnconfigure(1, weight=3)
-        master.columnconfigure(2, weight=1)
-        master.columnconfigure(3, weight=3)
-        master.columnconfigure(4, weight=1)
-        master.columnconfigure(5, weight=3)
-        master.columnconfigure(6, weight=1)
-        master.columnconfigure(7, weight=3)
-        master.columnconfigure(8, weight=1)
+        # for i in range(9):
+        #     master.columnconfigure(i, weight=((i % 2) * 2) + 1)
 
         self.create_box(master, rpos=1, cpos=1,
                         title="revenues", value="14000MAD")
