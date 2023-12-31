@@ -5,12 +5,12 @@ from ..global_style import GStyle
 from app.core.Data_Handler.GetHomeData import getStatistic
 from .sidebar import Sidebar
 from .header import Header
-from .sections.home.home import Home
-from .sections.users.users_section import UsersSection
-from .sections.customers.customers_section import CustomersSection
-from .sections.revenues.revenues_section import RevenuesSection
-from .sections.reservations.reservation_section import ReservationsSection
-from .sections.cars.cars_section import CarsSection
+from .sections.home.main import Home
+from .sections.users.main import UsersSection
+from .sections.customers.main import CustomersSection
+from .sections.revenues.main import RevenuesSection
+from .sections.reservations.main import ReservationsSection
+from .sections.cars.main import CarsSection
 from PIL import Image
 
 
@@ -75,12 +75,11 @@ class Main:
                                      format='gif -index %i' % (i))
                           for i in range(self.gifframeCnt)]
         self.giflabel = Label(l, text="", bg=GStyle.bg)
-        self.giflabel.pack()
+        self.giflabel.place(relx=0.5, rely=0.5, anchor="center")
         self.l.after(0, self.animate, 0)
         self.master.after(2000, l.destroy)
 
     def animate(self, ind):
-
         frame = self.gifframes[ind]
         ind += 1
         if ind == self.gifframeCnt:

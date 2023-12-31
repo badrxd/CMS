@@ -5,12 +5,12 @@ from .global_style import GStyle
 from app.core.Data_Handler.GetHomeData import getStatistic
 from .dashboard.sidebar import Sidebar
 from .dashboard.header import Header
-from .dashboard.sections.home.home import Home
-from .dashboard.sections.users.users_section import UsersSection
-from .dashboard.sections.customers.customers_section import CustomersSection
-from .dashboard.sections.revenues.revenues_section import RevenuesSection
-from .dashboard.sections.reservations.reservation_section import ReservationsSection
-from .dashboard.sections.cars.cars_section import CarsSection
+from .dashboard.sections.home.main import Home
+from .dashboard.sections.users.main import UsersSection
+from .dashboard.sections.customers.main import CustomersSection
+from .dashboard.sections.revenues.main import RevenuesSection
+from .dashboard.sections.reservations.main import ReservationsSection
+from .dashboard.sections.cars.main import CarsSection
 from .dashboard.main import Main
 
 Sections = {
@@ -59,31 +59,3 @@ class DashboardFrame(ctk.CTkFrame):
 
     def create_main(self):
         self.main = Main(self)
-#         """this will make switch mode more dynamic"""
-#         if section == "":
-#             section = self.frames["current"].__class__.__name__ if "current" in self.frames else "Home"
-#         """create main widgets"""
-#         self.frames[section] = Sections[section](self)
-
-#         """delete the old widget"""
-#         if "current" in self.frames:
-#             attr = "{}_label".format(self.frames["current\
-# "].__class__.__name__.lower())
-#             if hasattr(self.frames["Sidebar"], attr):
-#                 getattr(self.frames["Sidebar"], attr
-#                         ).configure(fg_color=GStyle.sidebar_bg,
-#                                     bg_color=GStyle.sidebar_bg)
-
-#             self.frames["current"].destroy()
-#             del self.frames["current"]
-#         self.frames["current"] = self.frames[section]
-
-#         """show the new widget"""
-#         self.frames[section].grid(column=1, row=1, sticky="news")
-#         attr = "{}_label".format(section.lower())
-#         if hasattr(self.frames["Sidebar"], attr):
-#             nav = getattr(self.frames["Sidebar"], attr
-#                           )
-#             nav.configure(fg_color=GStyle.buttons_hover_color,
-#                           bg_color=GStyle.sidebar_bg)
-#         self.frames["Header"].title.configure(text=section)
