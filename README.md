@@ -71,6 +71,12 @@ Our Graphical User Interface (GUI) is crafted using CustomTkinter, a customized 
 #### Dashboar:
 ![](./resources/images/dashboard_frame.png)
 
+##### home (light):
+![](./resources/images/home.jpg)
+
+##### home (dark):
+![](./resources/images/homedark.jpg)
+
 ## Features
 
 ### PostgreSQL Database Features
