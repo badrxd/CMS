@@ -15,17 +15,6 @@ class Sidebar(ctk.CTkFrame):
             bg_color=GStyle.sidebar_bg,
         )
         self.master = master
-        # self.columnconfigure(0, weight=1)
-        # self.columnconfigure(1, weight=1)
-        # self.rowconfigure(0, weight=5)
-        # self.rowconfigure(1, weight=1)
-        # self.rowconfigure(2, weight=1)
-        # self.rowconfigure(3, weight=1)
-        # self.rowconfigure(4, weight=1)
-        # self.rowconfigure(5, weight=1)
-        # self.rowconfigure(6, weight=1)
-        # self.rowconfigure(7, weight=10)
-        # self.rowconfigure(8, weight=10)
 
         """create an image object"""
         # image = ctk.CTkImage(light_image=Image.open(
@@ -94,7 +83,6 @@ class Sidebar(ctk.CTkFrame):
                                                        corner_radius=6,
                                                        command=self.reservations_section)
 
-        # self.reservationssection_label.grid(row=3, column=0, sticky="new")
         self.reservationssection_label.pack(pady=5)
 
         """revenue"""
@@ -114,7 +102,6 @@ class Sidebar(ctk.CTkFrame):
                                                    corner_radius=6,
                                                    command=self.revenues_section)
 
-        # self.revenuessection_label.grid(row=4, column=0, sticky="new")
         self.revenuessection_label.pack(pady=5)
 
         """customers"""
@@ -137,25 +124,26 @@ class Sidebar(ctk.CTkFrame):
         # self.customerssection_label.grid(row=5, column=0, sticky="new")
         self.customerssection_label.pack(pady=5)
 
-        """users"""
-        icon = ctk.CTkImage(light_image=Image.open(
-            "resources/icons/sidebar/users.png"), size=(30, 30))
-        self.userssection_label = ctk.CTkButton(self,
-                                                image=icon,
-                                                text="",
-                                                anchor="w",
-                                                width=10,
-                                                font=(GStyle.font_family,
-                                                      GStyle.meduim),
-                                                text_color=GStyle.sidebar_font_color,
-                                                bg_color=GStyle.sidebar_bg,
-                                                fg_color=GStyle.sidebar_bg,
-                                                hover_color=GStyle.buttons_hover_color,
-                                                corner_radius=6,
-                                                command=self.users_section)
+        if self.master.userInfo["role"] == "admin":
+            """users"""
+            icon = ctk.CTkImage(light_image=Image.open(
+                "resources/icons/sidebar/users.png"), size=(30, 30))
+            self.userssection_label = ctk.CTkButton(self,
+                                                    image=icon,
+                                                    text="",
+                                                    anchor="w",
+                                                    width=10,
+                                                    font=(GStyle.font_family,
+                                                          GStyle.meduim),
+                                                    text_color=GStyle.sidebar_font_color,
+                                                    bg_color=GStyle.sidebar_bg,
+                                                    fg_color=GStyle.sidebar_bg,
+                                                    hover_color=GStyle.buttons_hover_color,
+                                                    corner_radius=6,
+                                                    command=self.users_section)
 
-        # self.userssection_label.grid(row=6, column=0, sticky="new")
-        self.userssection_label.pack(pady=5)
+            # self.userssection_label.grid(row=6, column=0, sticky="new")
+            self.userssection_label.pack(pady=5)
 
         """logout button"""
         icon = ctk.CTkImage(light_image=Image.open(
@@ -172,31 +160,34 @@ class Sidebar(ctk.CTkFrame):
                                           fg_color=GStyle.sidebar_bg,
                                           hover_color=GStyle.buttons_hover_color,
                                           corner_radius=6,
-                                          command=master.on_logout)
+                                          command=self.log_out)
 
         # self.userssection_label.grid(row=6, column=0, sticky="new")
         self.logout_label.pack(pady=5)
 
         """create a border right"""
-        # ctk.CTkFrame(self, width=1, border_color=GStyle.login_bg, border_width=1,
-        #              fg_color=GStyle.login_bg,
-        #              bg_color=GStyle.login_bg).grid(
-        #     row=0, column=1, rowspan=9, sticky="news")
+        ctk.CTkFrame(self, height=1000, width=1, border_color=GStyle.frames_border, border_width=1,
+                     fg_color=GStyle.frames_border,
+                     bg_color=GStyle.frames_border).place(relx=1, rely=0.5, anchor="e")
 
     def home_section(self):
-        self.master.create_main("Home")
+        self.master.main.create_main("Home")
 
     def users_section(self):
-        self.master.create_main("UsersSection")
+        self.master.main.create_main("UsersSection")
 
     def customers_section(self):
-        self.master.create_main("CustomersSection")
+        self.master.main.create_main("CustomersSection")
 
     def cars_section(self):
-        self.master.create_main("CarsSection")
+        self.master.main.create_main("CarsSection")
 
     def revenues_section(self):
-        self.master.create_main("RevenuesSection")
+        self.master.main.create_main("RevenuesSection")
 
     def reservations_section(self):
-        self.master.create_main("ReservationsSection")
+        self.master.main.create_main("ReservationsSection")
+
+    def log_out(self):
+        del self.master.main.frames["current"]
+        self.master.on_logout()

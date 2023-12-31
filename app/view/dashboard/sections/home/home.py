@@ -1,8 +1,8 @@
 import customtkinter as ctk
 import tkinter
 import tkinter.messagebox
-from ..global_style import GStyle
-from ..libraries.professionalCTk import ProCTkTable, ProCTkScrollableFrame, gradient
+from ....global_style import GStyle
+from ....libraries.professionalCTk import ProCTkTable, ProCTkScrollableFrame, gradient
 from PIL import Image
 
 
@@ -67,25 +67,15 @@ class Home(ctk.CTkFrame):
         title.grid(row=1, column=0, padx=20)
         value = ctk.CTkLabel(
             box, text=params["value"], text_color=GStyle.font_color, font=(
-                GStyle.frames_font_color, GStyle.small))
+                GStyle.frames_font_color, GStyle.meduim))
         value.grid(row=2, column=0)
-
-        # b = gradient(box, color=GStyle.frames_border, columns=20, inc=1).grid(
-        #     column=1, row=1, rowspan=2, sticky="news")
 
     def short_info(self, master):
         master.rowconfigure(0, weight=1)
         master.rowconfigure(1, weight=2)
         master.rowconfigure(2, weight=1)
-        master.columnconfigure(0, weight=1)
-        master.columnconfigure(1, weight=3)
-        master.columnconfigure(2, weight=1)
-        master.columnconfigure(3, weight=3)
-        master.columnconfigure(4, weight=1)
-        master.columnconfigure(5, weight=3)
-        master.columnconfigure(6, weight=1)
-        master.columnconfigure(7, weight=3)
-        master.columnconfigure(8, weight=1)
+        # for i in range(9):
+        #     master.columnconfigure(i, weight=((i % 2) * 2) + 1)
 
         self.create_box(master, rpos=1, cpos=1,
                         title="revenues", value="14000MAD")
@@ -138,15 +128,24 @@ class Home(ctk.CTkFrame):
             rpos=1,
             cpos=1,
             pady=(40, 0),
-            title="Top Costumers",
+            title="TOP CUSTOMERS",
+            title_padx=0,
             title_color=GStyle.font_color,
             text_color=GStyle.font_color,
             head_fg_color=GStyle.header_bg,
+            title_fg_color=GStyle.bg,
+            title_bg_color=GStyle.bg,
+            title_pady=20,
             head_bg_color=GStyle.header_bg,
             head_text_color=GStyle.head_font_color,
             transparent=GStyle.bg,
+            table_background=GStyle.frames_bg,
             border_row=True,
-            data=json_data
+            data=json_data,
+            global_border=[GStyle.login_bg, 1],
+            lb_pady=6,
+            title_font=(GStyle.font_family, GStyle.meduim, 'bold'),
+            head_font=(GStyle.font_family, GStyle.small, 'bold')
         )
         ProCTkTable(
             master,
@@ -154,11 +153,21 @@ class Home(ctk.CTkFrame):
             cpos=1,
             pady=40,
             text_color=GStyle.font_color,
+            title_padx=0,
             title_color=GStyle.font_color,
+            title_pady=20,
             head_fg_color=GStyle.header_bg,
             head_bg_color=GStyle.header_bg,
             head_text_color=GStyle.head_font_color,
             border_row=True,
-            title="Last Reservations", transparent=GStyle.bg,
-            data=json_data
+            title="LAST RESERVATIONS",
+            title_fg_color=GStyle.bg,
+            title_bg_color=GStyle.bg,
+            transparent=GStyle.bg,
+            table_background=GStyle.frames_bg,
+            data=json_data,
+            global_border=[GStyle.login_bg, 1],
+            lb_pady=6,
+            title_font=(GStyle.font_family, GStyle.meduim, 'bold'),
+            head_font=(GStyle.font_family, GStyle.small, 'bold')
         )
