@@ -11,6 +11,8 @@ from .sections.customers.customers_section import CustomersSection
 from .sections.revenues.revenues_section import RevenuesSection
 from .sections.reservations.reservation_section import ReservationsSection
 from .sections.cars.cars_section import CarsSection
+from PIL import Image
+
 
 Sections = {
     "Home": Home,
@@ -67,6 +69,8 @@ class Main:
         self.master.after(2000, lt.destroy)
         l = ctk.CTkFrame(self.master, fg_color=GStyle.bg, bg_color=GStyle.bg)
         l.grid(column=1, row=1, sticky="news")
-        label = ctk.CTkLabel(l, text="LOADING...", font=(GStyle.font_family, GStyle.xl, "bold"),
+        icon = ctk.CTkImage(light_image=Image.open(
+            "resources/icons/loading.png"), size=(200, 200))
+        label = ctk.CTkLabel(l, text="", image=icon, font=(GStyle.font_family, GStyle.xl, "bold"),
                              text_color=GStyle.frames_font_color, bg_color=GStyle.bg, fg_color=GStyle.bg).pack(pady=100)
         self.master.after(2000, l.destroy)
