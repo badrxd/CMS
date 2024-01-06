@@ -1,12 +1,12 @@
 import customtkinter as ctk
 import tkinter
 import tkinter.messagebox
-from ..global_style import GStyle
-from ..libraries.professionalCTk import ProCTkTable, ProCTkScrollableFrame
+from ....global_style import GStyle
+from ....libraries.professionalCTk import ProCTkTable, ProCTkScrollableFrame
 from PIL import Image
 
 
-class CustomersSection(ctk.CTkFrame):
+class ReservationsSection(ctk.CTkFrame):
     def __init__(self, master):
         super().__init__(
             master,
