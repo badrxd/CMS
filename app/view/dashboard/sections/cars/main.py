@@ -1,15 +1,30 @@
 import customtkinter as ctk
-import tkinter
-import tkinter.messagebox
 from ....global_style import GStyle
 from ....libraries.professionalCTk import ProCTkTable, ProCTkScrollableFrame
 from PIL import Image
+from .components.cars_list import CarsList
+from .components.single_car import SingleCar
+from .components.add_car import AddCar
 
 
-class CarsSection(ctk.CTkFrame):
+class CarsSection:
+    components = {
+        "CarsList": CarsList,
+        "SingleCar": SingleCar,
+        "AddCar": AddCar
+    }
+    current: str
+    frames: dict
+
     def __init__(self, master):
-        super().__init__(
-            master,
-            fg_color=GStyle.bg,
-            bg_color=GStyle.bg
-        )
+        self.frames = {}
+        self.current = "CarsList"
+        self.master = master
+        self.frames[self.current] = CarsSection.components[self.current](
+            master, self)
+
+    def display(self):
+        self.frames[self.current].grid(column=1, row=1, sticky="news")
+
+    def destroy(self):
+        self.frames[self.current].destroy()

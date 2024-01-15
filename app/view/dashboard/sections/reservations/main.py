@@ -13,3 +13,6 @@ class ReservationsSection(ctk.CTkFrame):
             fg_color=GStyle.bg,
             bg_color=GStyle.bg
         )
+
+    def display(self):
+        self.grid(column=1, row=1, sticky="news")
