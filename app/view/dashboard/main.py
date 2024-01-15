@@ -52,7 +52,7 @@ class Main:
         self.frames["current"] = self.frames[section]
 
         """show the new widget"""
-        self.frames[section].grid(column=1, row=1, sticky="news")
+        self.frames[section].display()
         self.loading()
         attr = "{}_label".format(section.lower())
         if hasattr(self.master.frames["Sidebar"], attr):

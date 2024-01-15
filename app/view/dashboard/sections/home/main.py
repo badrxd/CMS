@@ -41,6 +41,9 @@ class Home(ctk.CTkFrame):
 
         self.create_tables(tables)
 
+    def display(self):
+        self.grid(column=1, row=1, sticky="news")
+
     def create_box(self, master, **params):
         box = ctk.CTkFrame(master, fg_color=GStyle.frames_bg,
                            border_color=GStyle.frames_border, border_width=1, width=500)

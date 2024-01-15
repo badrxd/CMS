@@ -14,6 +14,9 @@ class RevenuesSection(ctk.CTkFrame):
             bg_color=GStyle.bg
         )
 
+    def display(self):
+        self.grid(column=1, row=1, sticky="news")
+
         # def on_key_press(event):
         #     print("you pressed {}".format(event.key))
         #     key_press_handler(event, canvas, toolbar)

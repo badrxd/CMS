@@ -7,102 +7,58 @@ Welcome to CMS, a desktop application designed to streamline cars management sys
 ## Technologies Used
 
 ```r
+.
 ├── README.md
 ├── app
 │   ├── __init__.py
-│   ├── __pycache__
-│   │   └── __init__.cpython-310.pyc
 │   ├── core
 │   │   ├── Data_Handler
 │   │   │   ├── GetHomeData.py
 │   │   │   ├── __init__.py
-│   │   │   ├── __pycache__
-│   │   │   │   ├── GetHomeData.cpython-310.pyc
-│   │   │   │   └── __init__.cpython-310.pyc
 │   │   │   ├── car.py
 │   │   │   ├── customer.py
 │   │   │   └── user.py
 │   │   ├── __init__.py
-│   │   ├── __pycache__
-│   │   │   ├── __init__.cpython-310.pyc
-│   │   │   └── authentication.cpython-310.pyc
 │   │   ├── authentication.py
 │   │   ├── business_logic.py
 │   │   ├── data_handler.py
 │   │   └── image_handler.py
 │   └── view
 │       ├── __init__.py
-│       ├── __pycache__
-│       │   ├── __init__.cpython-310.pyc
-│       │   ├── app.cpython-310.pyc
-│       │   ├── dashboard_frame.cpython-310.pyc
-│       │   ├── global_style.cpython-310.pyc
-│       │   └── login_frame.cpython-310.pyc
 │       ├── app.py
 │       ├── dashboard
 │       │   ├── __init__.py
-│       │   ├── __pycache__
-│       │   │   ├── __init__.cpython-310.pyc
-│       │   │   ├── header.cpython-310.pyc
-│       │   │   ├── main.cpython-310.pyc
-│       │   │   └── sidebar.cpython-310.pyc
 │       │   ├── header.py
 │       │   ├── main.py
 │       │   ├── sections
 │       │   │   ├── __init__.py
-│       │   │   ├── __pycache__
-│       │   │   │   └── __init__.cpython-310.pyc
 │       │   │   ├── cars
 │       │   │   │   ├── __init__.py
-│       │   │   │   ├── __pycache__
-│       │   │   │   │   ├── __init__.cpython-310.pyc
-│       │   │   │   │   ├── cars_section.cpython-310.pyc
-│       │   │   │   │   └── main.cpython-310.pyc
 │       │   │   │   ├── components
 │       │   │   │   │   └── __init__.py
 │       │   │   │   └── main.py
 │       │   │   ├── customers
 │       │   │   │   ├── __init__.py
-│       │   │   │   ├── __pycache__
-│       │   │   │   │   ├── __init__.cpython-310.pyc
-│       │   │   │   │   ├── customers_section.cpython-310.pyc
-│       │   │   │   │   └── main.cpython-310.pyc
 │       │   │   │   ├── components
 │       │   │   │   │   └── __init__.py
 │       │   │   │   └── main.py
 │       │   │   ├── home
 │       │   │   │   ├── __init__.py
-│       │   │   │   ├── __pycache__
-│       │   │   │   │   ├── __init__.cpython-310.pyc
-│       │   │   │   │   ├── home.cpython-310.pyc
-│       │   │   │   │   └── main.cpython-310.pyc
 │       │   │   │   ├── components
 │       │   │   │   │   └── __init__.py
 │       │   │   │   └── main.py
 │       │   │   ├── reservations
 │       │   │   │   ├── __init__.py
-│       │   │   │   ├── __pycache__
-│       │   │   │   │   ├── __init__.cpython-310.pyc
-│       │   │   │   │   ├── main.cpython-310.pyc
-│       │   │   │   │   └── reservation_section.cpython-310.pyc
 │       │   │   │   ├── components
 │       │   │   │   │   └── __init__.py
 │       │   │   │   └── main.py
 │       │   │   ├── revenues
 │       │   │   │   ├── __init__.py
-│       │   │   │   ├── __pycache__
-│       │   │   │   │   ├── __init__.cpython-310.pyc
-│       │   │   │   │   ├── main.cpython-310.pyc
-│       │   │   │   │   └── revenues_section.cpython-310.pyc
 │       │   │   │   ├── components
 │       │   │   │   │   └── __init__.py
 │       │   │   │   └── main.py
 │       │   │   └── users
 │       │   │       ├── __init__.py
-│       │   │       ├── __pycache__
-│       │   │       │   ├── __init__.cpython-310.pyc
-│       │   │       │   ├── main.cpython-310.pyc
-│       │   │       │   └── users_section.cpython-310.pyc
 │       │   │       ├── components
 │       │   │       │   └── __init__.py
 │       │   │       └── main.py
@@ -110,8 +66,6 @@ Welcome to CMS, a desktop application designed to streamline cars management sys
 │       ├── dashboard_frame.py
 │       ├── global_style.py
 │       ├── libraries
-│       │   ├── __pycache__
-│       │   │   └── professionalCTk.cpython-310.pyc
 │       │   └── professionalCTk.py
 │       └── login_frame.py
 ├── env
@@ -122,23 +76,11 @@ Welcome to CMS, a desktop application designed to streamline cars management sys
 ├── main.py
 ├── models
 │   ├── __init__.py
-│   ├── __pycache__
-│   │   ├── __init__.cpython-310.pyc
-│   │   ├── base_model.cpython-310.pyc
-│   │   ├── car.cpython-310.pyc
-│   │   ├── customer.cpython-310.pyc
-│   │   ├── reservation.cpython-310.pyc
-│   │   ├── revenue.cpython-310.pyc
-│   │   ├── settings.cpython-310.pyc
-│   │   └── user.cpython-310.pyc
 │   ├── base_model.py
 │   ├── car.py
 │   ├── customer.py
 │   ├── engine
 │   │   ├── __init__.py
-│   │   ├── __pycache__
-│   │   │   ├── __init__.cpython-310.pyc
-│   │   │   └── db_storage.cpython-310.pyc
 │   │   └── db_storage.py
 │   ├── reservation.py
 │   ├── revenue.py
@@ -184,8 +126,9 @@ Welcome to CMS, a desktop application designed to streamline cars management sys
 └── tmp
     ├── graphs.py
     └── shadow.py
-
 ```
+
+
 ### Database: PostgreSQL
 
 Our app relies on PostgreSQL as the primary database. PostgreSQL is a powerful, open-source relational database management system known for its reliability and extensibility. It provides robust support for complex queries, transactions, and data integrity.
