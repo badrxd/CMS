@@ -3,6 +3,7 @@ import tkinter
 import tkinter.messagebox
 from ....global_style import GStyle
 from ....libraries.professionalCTk import ProCTkTable, ProCTkScrollableFrame, gradient
+from .....core.Data_Handler.GetHomeData import getStatistic
 from PIL import Image
 
 
@@ -80,14 +81,15 @@ class Home(ctk.CTkFrame):
         # for i in range(9):
         #     master.columnconfigure(i, weight=((i % 2) * 2) + 1)
 
+        status = getStatistic()
         self.create_box(master, rpos=1, cpos=1,
-                        title="revenues", value="14000MAD")
+                        title="revenues", value=status["mounth_income"])
         self.create_box(master, rpos=1, cpos=3,
-                        title="customers", value="39")
+                        title="customers", value=status["customers"])
         self.create_box(master, rpos=1, cpos=5,
-                        title="reservations", value="64")
+                        title="reservations", value=status["reservations"])
         self.create_box(master, rpos=1, cpos=7,
-                        title="cars", value="23")
+                        title="cars", value=status["cars"])
 
     def create_tables(self, master):
         master.columnconfigure(0, weight=1)
