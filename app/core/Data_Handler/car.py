@@ -9,7 +9,7 @@ from models import storage
 def CreatCar(args):
     car = None
     images_path = None
-    session = storage.session()
+    session = storage.session
     try:
         # images_path = session.query(Settings).first()
         # if images_path is None or type(images_path) is not Settings :
@@ -18,16 +18,16 @@ def CreatCar(args):
 
         car = Car(**args)
 
-        name = ImageName(car.id, args.get('car_image'))
-        save = SaveImage(args.get('car_image'), section='cars',
-                         images_path=images_path, name=name)
+        # name = ImageName(car.id, args.get('car_image'))
+        # save = SaveImage(args.get('car_image'), section='cars',
+        #                  images_path=images_path, name=name)
 
-        if save.get('error'):
-            raise IOError(save.get('message'))
+        # if save.get('error'):
+        #     raise IOError(save.get('message'))
 
-        car.update({'car_image': name})
+        # car.update({'car_image': name})
 
-        # car.save()
+        car.save()
 
         return ({'error': False})
     except (IOError, OSError, ValueError) as e:
@@ -52,3 +52,9 @@ def updateCar(args, id):
         # car.save()
     except Exception:
         pass
+
+def getcars():
+    """
+    get all cars
+    """
+    return storage.all(Car)

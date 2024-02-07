@@ -8,7 +8,7 @@ from sqlalchemy import func
 
 
 def getStatistic():
-    """methode that return the lenght of cars , 
+    """methode that return the lenght of cars ,
     customer reservations, and the last mouth revenue"""
 
     session = storage.session()
@@ -26,7 +26,7 @@ def getStatistic():
         Revenue).order_by(Revenue.created_at.desc()).first()
 
     data['mounth_income'] = 0 if lastRevenue == None else lastRevenue['amount']
-    print(data)
+
     return data
 
 

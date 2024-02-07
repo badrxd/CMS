@@ -20,11 +20,21 @@ class CarsSection:
         self.frames = {}
         self.current = "CarsList"
         self.master = master
+        self.create()
+
+
+    def create(self):
         self.frames[self.current] = CarsSection.components[self.current](
-            master, self)
+            self.master, self)
 
     def display(self):
         self.frames[self.current].grid(column=1, row=1, sticky="news")
 
     def destroy(self):
         self.frames[self.current].destroy()
+
+    def switch(self, frame):
+        self.destroy()
+        self.current = frame
+        self.create()
+        self.display()
